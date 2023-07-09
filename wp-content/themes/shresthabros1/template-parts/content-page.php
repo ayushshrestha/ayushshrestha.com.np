@@ -1,6 +1,6 @@
 <?php
 /**
- * Template part for displaying post content in post listing
+ * Template part for displaying page content in page.php
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
@@ -8,12 +8,14 @@
  */
 
 ?>
-<article id="post-<?php the_ID(); ?>" <?php post_class('p-5 border rounded-lg mx-4'); ?>>
 
-    <div class="hover:scale-110 transition duration-1000 overflow-hidden w-full aspect-video">
-        <?php shresthabros_post_thumbnail(); ?>
-    </div>
-    <?php the_title( '<h1 class="text-lg font-bold py-4">', '</h1>' ); ?>
+<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+	<header class="entry-header">
+		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+	</header><!-- .entry-header -->
+
+	<?php shresthabros_post_thumbnail(); ?>
+
 	<div class="entry-content">
 		<?php
 		the_content();
