@@ -146,6 +146,19 @@ add_action( 'widgets_init', 'shresthabros_widgets_init' );
  }
  add_filter('nav_menu_css_class', 'add_additional_class_on_li', 1, 3);
 
+
+
+ function limit_word_count($title) {
+	$len = 20; //change this to the number of words
+	if (str_word_count($title) > $len) {
+		$keys = array_keys(str_word_count($title, 2));
+		$title = substr($title, 0, $keys[$len]);
+	}
+	return $title;
+}
+add_filter('the_title', 'limit_word_count');
+
+
 /**
  * Enqueue scripts and styles.
  */
