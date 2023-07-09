@@ -73,7 +73,15 @@ Header
 }
 
 
-/* our brands */
+/* portfolio */
+
+
+.hero_banner .slick-track {
+    height: 100%;
+}
+.hero_banner .slick-list {
+    height: 100%;
+}
 
 .slick-slider .slick-arrow {
     position: absolute;

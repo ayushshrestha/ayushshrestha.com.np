@@ -16,28 +16,35 @@
 <main id="primary" class="mx-auto text-lg tracking-tight text-slate-700" >
 
         <div class="relative overflow-hidden">
-            <div class="slick-one" data-aos="fade-up" data-aos-anchor-placement="top" data-aos-duration="1000">                
-                <?php $the_query = new WP_Query('post_type=hero'); ?>                        
-                <?php while ($the_query -> have_posts()) : $the_query -> the_post(); ?>
-                <div class="hero_banner relative overflow-hidden bg-white">
-                    <div class="image image-1by1 ease-in duration-300">
-                        <figure>
-                            <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
-                                <?php if ( has_post_thumbnail() ) {
-                                    the_post_thumbnail('full', array('class' => 'w-full'));
-                                } else { ?>
-                                    <img src="<?php bloginfo('template_directory'); ?>/images/default-image.jpg" alt="<?php the_title(); ?>" />
-                                <?php } ?>
-                            </a>
-                        </figure>
+        <?php $the_query = new WP_Query('post_type=hero'); ?>  
+            <div>
+                <div class="relative hero_banner ">
+                    <div class="absolute h-full md:w-2/3 top-0 end-0 bg-black">
+                        <div class="slick-one h-full">                
+                            <?php while ($the_query -> have_posts()) : $the_query -> the_post();
+                            if ( has_post_thumbnail( $post->ID ) ) :
+                                $postthumbnails = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' );
+                                $postthumbnails = $postthumbnails[0]; else:
+                                $postthumbnails = get_template_directory_uri() . '/images/default-image-large.jpg';
+                              endif; ?>
+                            <div class="h-full" style="background:url('<?php echo $postthumbnails;?>') no-repeat center center; background-size:cover;">
+                            </div>
+                            <?php endwhile; ?>
+                        </div>
                     </div>
-                    <div class="fixed inset-0 z-10 bg-gray-300/40 dark:bg-black/80 opacity-100"></div>
-                    <div class="p-10 absolute z-20 bottom-0">
+                </div>               
+                
+                <div class="absolute inset-0 h-full w-full z-10 bg-gray-300/40 dark:bg-black/80 opacity-100"></div>
+                <div class="p-10 absolute z-20 bottom-0 slick-one_sync"> 
+                    <?php while ($the_query -> have_posts()) : $the_query -> the_post(); ?>
+                    <div>
                         <h5 class="text-white text-md"><?php the_field('year'); ?></h5>
                         <h4 class="text-white text-20xl font-bold font-lora"><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h4>
+                        <p><?php the_content();?></p>
                     </div>
+                    <?php endwhile; ?>  
                 </div>
-                <?php endwhile; wp_reset_postdata(); ?>
+                <?php wp_reset_postdata();  ?>
             </div>
         </div>
 
@@ -180,7 +187,7 @@
         <?php while( have_rows('letshavesomecoffee') ): the_row(); $letsWorkBannerImage = get_sub_field('lets_work_background_image');?>
         <div class="text-center relative mt-10" style="background:url('<?php echo $letsWorkBannerImage['url'];?>') no-repeat center center; background-size:cover;">
             <div class="w-full py-40 bg-black/60">
-                <div class="max-w-screen-xl mx-auto px-4 text-white" data-aos="fade-up" data-aos-anchor-placement="top" data-aos-duration="1000">
+                <div class="max-w-screen-sm mx-auto px-4 text-white" data-aos="fade-up" data-aos-anchor-placement="top" data-aos-duration="1000">
                     <h2 class="mb-3 text-4xl font-bold tracking-[-0.04em] sm:leading-[3.5rem]"><?php the_sub_field('lets_work_title'); ?></h2>
                     <h3 class="mb-8 text-xl"><?php the_sub_field('lets_work_paragraph'); ?></h3>
                     <a href="" title="Email us" class="bg-transparent hover:bg-primary text-primary font-semibold sm:leading-[3.5rem] hover:text-white py-4 px-8 border border-primary hover:border-transparent rounded transition">Email us</a>

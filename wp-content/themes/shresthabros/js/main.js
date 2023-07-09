@@ -12,8 +12,21 @@ $(document).ready(function() {
         speed: 1000,
         arrows: false,
         dots: false,
-        fade: true
+        fade: true,
+        asNavFor: '.slick-one_sync'
     }); 
+    $('.slick-one_sync').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplaySpeed:6000,
+        focusOnSelect: true,
+        autoplay: true,
+        speed: 1000,
+        arrows: false,
+        dots: false,
+        fade: true,
+        asNavFor: '.slick-one'
+    });
     
 
     $('.slick-two').slick({

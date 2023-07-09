@@ -60,13 +60,24 @@
 				</div>
 			</div>
 		</div>
-		<div class="site-info text-sm text-gray-500 border-t py-8 text-center">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'shresthabros' ) ); ?>">
+		<div class="site-info text-sm text-gray-500 border-t py-8 text-center flex items-center justify-center space-x-2">
+			<a class="hidden" href="<?php echo esc_url( __( 'https://wordpress.org/', 'shresthabros' ) ); ?>">
 				<?php
 				/* translators: %s: CMS name, i.e. WordPress. */
 				printf( esc_html__( '© 2023 NDPL, All right reserved %s', 'shresthabros' ), 'WordPress' );
 				?>
 			</a>
+			© <?=date("Y")?> <?php bloginfo( 'name' ); ?>, All right reserved 
+			<?php
+			$wpFooterThreeNavMenu = array(
+				'container'     => '',
+				'theme_location'=> 'footer-menu-3',
+				'items_wrap'        => '<ul class=" flex items-center space-x-2">%3$s</ul>',
+				'depth'         => 1,
+				'fallback_cb'   => false,
+				'add_li_class'  => 'transition text-primary hover:text-gray-300 text-sm'
+				);
+			wp_nav_menu($wpFooterThreeNavMenu); ?>
 			<div class="hidden">
 				<span class="sep"> | </span>
 				<?php
