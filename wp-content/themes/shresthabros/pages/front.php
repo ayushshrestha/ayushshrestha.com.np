@@ -67,15 +67,15 @@
         <?php endwhile; ?>
         <?php endif; ?>
 
-        <div class="px-4 sm:px-6 md:max-w-8xl md:px-4 lg:px-12 relative overflow-hidden bg-secondary bg-primary--before">
+        <div class="px-4 sm:px-6 md:max-w-8xl md:px-4 lg:px-12 relative overflow-hidden bg-sky-400/10 text-sky-600 dark:text-sky-400 bg-primary--beforex">
             <div class="py-10 max-w-screen-xl mx-auto px-4">
-                <h2 class="text-4xl font-bold tracking-tight pb-8 pt-12 text-white sm:text-5xl">Portfolio</h2>
+                <h2 class="text-4xl font-bold tracking-tight pb-8 pt-12 sm:text-5xl">Portfolio</h2>
                 <ul class="slick-two slick-two--arrow -mx-4 pb-10 mb-10" data-aos="fade-up" data-aos-anchor-placement="top" data-aos-duration="1000">                
                     <?php $the_query = new WP_Query('post_type=portfolio'); ?>                        
                     <?php while ($the_query -> have_posts()) : $the_query -> the_post(); ?>
-                    <li class="px-5 mb-4">
+                    <li class="px-5 mb-4 grayscale hover:grayscale-0 ease-in duration-300">
                         <div class="relative overflow-hidden bg-white">
-                            <div class="image image-1by1 grayscale hover:grayscale-0 ease-in duration-300">
+                            <div class="image image-1by1 ease-in duration-300">
                                 <figure>
                                     <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
                                         <?php if ( has_post_thumbnail() ) {
@@ -155,9 +155,9 @@
                         <?php $the_query = new WP_Query( 'posts_per_page=5' ); ?>
                         <?php while ($the_query -> have_posts()) : $the_query -> the_post(); ?>
                     
-                    <li class="px-5 mb-4 h-full">
+                    <li class="px-5 mb-4 h-full grayscale hover:grayscale-0 ease-in duration-300">
                         <div class="relative overflow-hidden bg-white h-full">
-                            <div class="image grayscale hover:grayscale-0 ease-in duration-300">
+                            <div class="image ease-in duration-300">
                                 <figure>
                                     <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
                                         <?php if ( has_post_thumbnail() ) {
@@ -187,7 +187,7 @@
         <?php while( have_rows('letshavesomecoffee') ): the_row(); $letsWorkBannerImage = get_sub_field('lets_work_background_image');?>
         <div class="text-center relative mt-10" style="background:url('<?php echo $letsWorkBannerImage['url'];?>') no-repeat center center; background-size:cover;">
             <div class="w-full py-40 bg-black/60">
-                <div class="max-w-screen-sm mx-auto px-4 text-white" data-aos="fade-up" data-aos-anchor-placement="top" data-aos-duration="1000">
+                <div class="max-w-screen-sm mx-auto px-4 text-white">
                     <h2 class="mb-3 text-4xl font-bold tracking-[-0.04em] sm:leading-[3.5rem]"><?php the_sub_field('lets_work_title'); ?></h2>
                     <h3 class="mb-8 text-xl"><?php the_sub_field('lets_work_paragraph'); ?></h3>
                     <a href="" title="Email us" class="bg-transparent hover:bg-primary text-primary font-semibold sm:leading-[3.5rem] hover:text-white py-4 px-8 border border-primary hover:border-transparent rounded transition">Email us</a>
