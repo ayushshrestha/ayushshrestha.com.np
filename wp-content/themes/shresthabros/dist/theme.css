@@ -1,0 +1,125 @@
+
+
+body {
+    animation: fadeInAnimation ease 3s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+
+    overflow-x: hidden;
+}
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+
+/*
+Header 
+-----------------------------------*/
+
+
+/* image ratio */
+
+.image {
+    overflow: hidden;
+    width: 100%;
+}
+
+.image:hover figure a img {
+    transform: scale(1.1);
+}
+.image figure {
+    position: relative;
+    width: 100%;
+    padding-top: 66.66%;
+    overflow: hidden;
+}
+
+.image.image-1by1 figure {
+    position: relative;
+    width: 100%;
+    padding-top: 100%;
+    overflow: hidden;
+}
+
+.image figure a, .image figure span.im {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+}
+
+.image figure a, .image figure span.im {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+}
+
+.image figure a img {
+    transition: all .5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+}
+
+
+/* portfolio */
+
+
+.hero_banner .slick-track {
+    height: 100%;
+}
+.hero_banner .slick-list {
+    height: 100%;
+}
+
+.slick-slider .slick-arrow {
+    position: absolute;
+    bottom: 0;
+    width: 48px;
+    height: 48px;
+    font-size: 0;
+    border: 0;
+    outline: none;
+    -webkit-transition: color 0.3s;
+    -moz-transition: color 0.3s;
+    -o-transition: color 0.3s;
+    transition: color 0.3s;
+    top: 0;
+    margin: auto 0;
+    background-color: #111;
+    background-repeat: no-repeat;
+    background-position: center center;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+    transition: all 300ms ease-in-out;
+}
+
+.slick-slider .slick-arrow:before {
+    display: none;
+}
+
+.slick-slider .slick-prev {
+    left: 0;
+    z-index: 1;
+    background-image: url(../images/prev-arrow-icon.svg);
+}
+
+.slick-slider .slick-next {
+    right: 0;
+    background-image: url(../images/next-arrow-icon.svg);
+}
+
+.slick-slider .slick-slider {
+    margin: 0 -15px;
+}

@@ -9,20 +9,16 @@
 
 get_header();
 ?>
+	<?php if ( have_posts() ) : ?>
 
-	<main id="primary" class="site-main">
 
-		<?php if ( have_posts() ) : ?>
-
-			<header class="page-header">
-				<h1 class="page-title">
-					<?php
-					/* translators: %s: search query. */
-					printf( esc_html__( 'Search Results for: %s', 'shresthabros' ), '<span>' . get_search_query() . '</span>' );
-					?>
-				</h1>
-			</header><!-- .page-header -->
-
+	<div class="text-center relative">
+		<div class="w-full py-40 bg-black/60">
+			<h3 class="font-bold text-3xl text-white"><?php printf( esc_html__( 'Search Results for: %s', 'shresthabros' ), '<span>' . get_search_query() . '</span>' ); ?></h3>
+		</div>
+	</div>
+	<main id="primary" class="site-main py-10 max-w-screen-xl mx-auto px-4">
+		<div class="grid gap-8 sm:grid-cols-2">
 			<?php
 			/* Start the Loop */
 			while ( have_posts() ) :
@@ -45,6 +41,7 @@ get_header();
 
 		endif;
 		?>
+		</div>
 
 	</main><!-- #main -->
 

@@ -9,13 +9,26 @@
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
-		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
-	</header><!-- .entry-header -->
+<?php 
 
-	<?php shresthabros_post_thumbnail(); ?>
+// If we have a featured image, it will be used as background image using the same logic you already used, but we put the src value in a specific variable: $imageUrl
+if ( has_post_thumbnail( $post->ID ) ) :
+	$postthumbnails = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' );
+	$postthumbnails = $postthumbnails[0];
+  // if not, we define $imageUrl with our default image src value
+else:
+	$postthumbnails = get_template_directory_uri() . '/images/default-image-large.jpg';
+  endif;
 
+?>
+<div class="text-center relative" style="background:url('<?php echo $postthumbnails;?>') no-repeat center center; background-size:cover;">
+	<div class="w-full py-40 bg-black/60">
+		<div class="max-w-screen-xl mx-auto px-4 text-white">
+			<?php the_title( '<h3 class="font-bold text-3xl">', '</h3>' ); ?>
+		</div>
+	</div>
+</div>
+<article id="post-<?php the_ID(); ?>" <?php post_class(' py-10 max-w-screen-xl mx-auto px-4 '); ?>>
 	<div class="entry-content">
 		<?php
 		the_content();

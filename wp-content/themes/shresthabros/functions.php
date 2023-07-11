@@ -20,6 +20,12 @@ if ( ! defined( '_S_VERSION' ) ) {
  * as indicating support for post thumbnails.
  */
 function shresthabros_setup() {
+
+	function time_ago( $type = 'post' ) {
+		$d = 'comment' == $type ? 'get_comment_time' : 'get_post_time';
+		return human_time_diff($d('U'), current_time('timestamp')) . " " . __('ago');
+	}
+	
 	/*
 		* Make theme available for translation.
 		* Translations can be filed in the /languages/ directory.
@@ -45,11 +51,24 @@ function shresthabros_setup() {
 		* @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
 		*/
 	add_theme_support( 'post-thumbnails' );
+	
+	function limit_word_count($title) {
+		$len = 20; //change this to the number of words
+		if (str_word_count($title) > $len) {
+			$keys = array_keys(str_word_count($title, 2));
+			$title = substr($title, 0, $keys[$len]);
+		}
+		return $title;
+	}
+	add_filter('the_title', 'limit_word_count');
+	
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus(
 		array(
-			'menu-primary' => esc_html__( 'Primary', 'shresthabros' ),
+			'primary-menu' => esc_html__( 'Primary', 'shresthabros' ),
+			'footer-menu-1' => esc_html__( 'Footer 1', 'shresthabros' ),
+			'footer-menu-2' => esc_html__( 'Footer 2', 'shresthabros' ),
 		)
 	);
 
@@ -102,6 +121,9 @@ function shresthabros_setup() {
 }
 add_action( 'after_setup_theme', 'shresthabros_setup' );
 
+
+
+
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
  *
@@ -134,38 +156,34 @@ function shresthabros_widgets_init() {
 }
 add_action( 'widgets_init', 'shresthabros_widgets_init' );
 
-/**
- * add class in li menu
- */
 
- function add_additional_class_on_li($classes, $item, $wpNavMenu){
-	if(isset($wpNavMenu->add_li_class)){
-		$classes[] = $wpNavMenu->add_li_class;
-	}
-	return $classes;
- }
- add_filter('nav_menu_css_class', 'add_additional_class_on_li', 1, 3);
-
-
-
- function limit_word_count($title) {
-	$len = 20; //change this to the number of words
-	if (str_word_count($title) > $len) {
-		$keys = array_keys(str_word_count($title, 2));
-		$title = substr($title, 0, $keys[$len]);
-	}
-	return $title;
+function add_additional_class_on_li($classes, $item, $wpNavMenu) {
+    if(isset($wpNavMenu->add_li_class)) {
+        $classes[] = $wpNavMenu->add_li_class;
+    }
+    return $classes;
 }
-add_filter('the_title', 'limit_word_count');
-
+add_filter('nav_menu_css_class', 'add_additional_class_on_li', 1, 3);
 
 /**
  * Enqueue scripts and styles.
  */
 function shresthabros_scripts() {
-	wp_enqueue_style( 'ayushshrestha-css', get_template_directory_uri() . '/assets/css/style.css', array(), _S_VERSION);
+	//wp_enqueue_style( 'shresthabros-style', get_stylesheet_uri(), array(), _S_VERSION );
+	//wp_style_add_data( 'shresthabros-style', 'rtl', 'replace' );
 
-	wp_enqueue_script( 'shresthabros-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
+	wp_enqueue_style( 'shresthabros-slick', get_template_directory_uri() . '/dist/slick.css', array(), _S_VERSION);
+	wp_enqueue_style( 'shresthabros-aos', '//unpkg.com/aos@2.3.1/dist/aos.css', array(), _S_VERSION);
+	wp_enqueue_style( 'shresthabros-slicktheme', get_template_directory_uri() . '/dist/slick-theme.css', array(), _S_VERSION);
+	wp_enqueue_style( 'shresthabros-tailwind-style', get_template_directory_uri() . '/dist/style.css', array(), _S_VERSION);
+	wp_enqueue_style( 'shresthabros-theme', get_template_directory_uri() . '/dist/theme.css', array(), _S_VERSION);	
+
+	
+	wp_enqueue_script( 'shresthabros-jquery', '//code.jquery.com/jquery-1.11.0.min.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'shresthabros-migrate', '//code.jquery.com/jquery-migrate-1.2.1.min.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'shresthabros-aos', '//unpkg.com/aos@2.3.1/dist/aos.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'shresthabros-slick', get_template_directory_uri() . '/js/slick.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'shresthabros-main', get_template_directory_uri() . '/js/main.js', array(), _S_VERSION, true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
