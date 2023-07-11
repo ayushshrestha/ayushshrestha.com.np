@@ -42,7 +42,7 @@
                             <div>
                                 <h5 class="text-white text-md"><?php the_field('year'); ?></h5>
                                 <h4 class="text-white text-20xl font-bold font-lora"><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h4>
-                                <h5 class="text-white text-3xl text-wrap"><?php the_content();?></h5>
+                                <h5 class="text-white text-2xl 2xl:text-3xl text-wrap"><?php the_content();?></h5>
                             </div>
                         <?php endwhile; ?>  
                     </div>
@@ -62,7 +62,7 @@
                     </a>
                 </div>
                 <div class="col-span-2">
-                    <div class="grid grid-cols-3 gap-10">              
+                    <div class="grid md:grid-cols-2 2xl:grid-cols-3 gap-10">              
                         <?php $the_query = new WP_Query('post_type=service'); ?>                        
                         <?php while ($the_query -> have_posts()) : $the_query -> the_post(); ?>
                         <div class="mb-4 ease-in duration-300">
@@ -199,7 +199,7 @@
                                 </figure>
                             </div>
                             <div class="p-8 space-y-2">
-                                <a class="text-sm font-medium px-2.5 pt-0.5 pb-1 rounded bg-primary hover:bg-secondary text-white transition duration-300 ease-in" href="<?php the_permalink(); ?>"><?php $categories = get_the_category(); if ( ! empty( $categories ) ) { echo esc_html( $categories[0]->name ); } ?></a>
+                                <a class="text-sm font-medium px-1.5 pt-0.5 pb-1 rounded bg-primary hover:bg-secondary text-white transition duration-300 ease-in" href="<?php the_permalink(); ?>"><?php $categories = get_the_category(); if ( ! empty( $categories ) ) { echo esc_html( $categories[0]->name ); } ?></a>
                                 <h5 class="mb-3 text-xl font-bold"><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h5>
                                 <div class="card-text text-md text-gray-500 hidden"><?php echo wp_trim_words( get_the_content(), 20, '...' );?></div>
                                 <div class="text-gray-300 mt-4 flex justify-end item-center">
