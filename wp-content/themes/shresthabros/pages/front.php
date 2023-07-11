@@ -13,7 +13,7 @@
  get_header();
 ?>
 
-<main id="primary" class="mx-auto text-lg tracking-tight text-slate-700" >
+<main id="primary" class="mx-auto text-lg tracking-tight text-gray-600" >
 
         <div class="relative overflow-hidden">
         <?php $the_query = new WP_Query('post_type=hero'); ?>  
@@ -34,43 +34,71 @@
                     </div>
                 </div>               
                 
-                <div class="absolute inset-0 h-full w-full z-10 bg-gray-300/40 dark:bg-black/80 opacity-100"></div>
-                <div class="p-10 absolute z-20 bottom-0 slick-one_sync"> 
-                    <?php while ($the_query -> have_posts()) : $the_query -> the_post(); ?>
-                    <div>
-                        <h5 class="text-white text-md"><?php the_field('year'); ?></h5>
-                        <h4 class="text-white text-20xl font-bold font-lora"><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h4>
-                        <p><?php the_content();?></p>
+                <div class="absolute inset-0 h-full w-full z-10 bg-gray-400/40 dark:bg-black/80 opacity-100"></div>
+                
+                <div class="p-20 absolute z-20 bottom-0 w-full"> 
+                    <div class="slick-one_sync">
+                        <?php while ($the_query -> have_posts()) : $the_query -> the_post(); ?>
+                            <div>
+                                <h5 class="text-white text-md"><?php the_field('year'); ?></h5>
+                                <h4 class="text-white text-20xl font-bold font-lora"><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h4>
+                                <h5 class="text-white text-3xl text-wrap"><?php the_content();?></h5>
+                            </div>
+                        <?php endwhile; ?>  
                     </div>
-                    <?php endwhile; ?>  
                 </div>
                 <?php wp_reset_postdata();  ?>
             </div>
         </div>
 
-        <?php if( have_rows('aboutus_banner') ): ?>
-        <?php while( have_rows('aboutus_banner') ): the_row(); $aboutusBannerImage = get_sub_field('aboutus_banner_image');?>
-            <div class="py-10 aboutus_banner aboutus_banner--red-transparent relative flex items-center" style="background:url('<?php echo $aboutusBannerImage['url'];?>') no-repeat center center; background-size:cover; background-attachment: fixed;">
-                <?php if( have_rows('aboutus_banner_caption') ): ?>
-                <div class="absolute w-full">
-                    <div class="max-w-screen-xl mx-auto px-4 space-y-5" data-aos="fade-up" data-aos-anchor-placement="top" data-aos-duration="1000">
-                        <?php while( have_rows('aboutus_banner_caption') ): the_row(); ?>
-                        <h2 class="mb-8 text-3xl font-bold tracking-[-0.04em] text-white sm:text-5xl"><?php the_sub_field('aboutus_banner_title_large'); ?></h2>
-                        <h3 class="text-3xl text-white font-medium sm:leading-[2.5rem]"><?php the_sub_field('aboutus_banner_title_small'); ?></h3>
-                        <div class="text-white"><?php the_sub_field('aboutus_banner_paragraph'); ?></div>
-                        <a href="" class="text-white hover:text-primary text-sm tracking-[0.1em] mt-8 flex items-center">KNOW MORE NDPL </a>
-                    <?php endwhile; ?>
+        <div class="p-4 sm:px-6 lg:px-12 md:py-32 relative overflow-hidden bg-sky-400/10">
+            <div class="grid grid-cols-3 gap-4 h-full">
+                <div class="sticky top-0">
+                    <h2 class="text-4xl font-bold tracking-tight sm:text-5xl text-sky-600">Services</h2>
+                    <p class="mb-10">Producing Outstanding Interactive Products around Across Platforms</p>
+                    <a class="rounded-3xl text-sm font-semibold py-3 px-4 bg-gray-900 text-white hover:bg-gray-700">
+                        <span>View <span class="hidden sm:inline">More</span> 
+                        <span aria-hidden="true" class="text-slate-400 sm:inline">→</span></span>
+                    </a>
+                </div>
+                <div class="col-span-2">
+                    <div class="grid grid-cols-3 gap-10">              
+                        <?php $the_query = new WP_Query('post_type=service'); ?>                        
+                        <?php while ($the_query -> have_posts()) : $the_query -> the_post(); ?>
+                        <div class="mb-4 ease-in duration-300">
+                            <div class="relative overflow-hidden">
+                                <div class="image ease-in duration-300">
+                                    <figure>
+                                        <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+                                            <?php if ( has_post_thumbnail() ) {
+                                                the_post_thumbnail('full', array('class' => 'w-full'));
+                                            } else { ?>
+                                                <img src="<?php bloginfo('template_directory'); ?>/images/default-image.jpg" alt="<?php the_title(); ?>" />
+                                            <?php } ?>
+                                        </a>
+                                    </figure>
+                                </div>
+                                <div class="py-6">
+                                    <h4 class="text-2xl font-bold font-lora"><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h4>
+                                    <div class="card-text text-md text-gray-500"><?php echo wp_trim_words( get_the_content(), 20, '...' );?></div>
+                                    <div class="text-gray-300 mt-4">
+                                        <small><a href="<?php the_permalink() ?>" target="_blank" rel="noopener noreferrer" class="text-secondary">About <?php the_title(); ?></a></small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <?php endwhile; wp_reset_postdata(); ?>
                     </div>
                 </div>
-                <?php endif; ?>
             </div>
-        <?php endwhile; ?>
-        <?php endif; ?>
+        </div>
 
-        <div class="px-4 sm:px-6 md:max-w-8xl md:px-4 lg:px-12 relative overflow-hidden bg-sky-400/10 text-sky-600 dark:text-sky-400 bg-primary--beforex">
+        <div class="px-4 sm:px-6 md:max-w-8xl md:px-4 lg:px-12 relative overflow-hidden bg-sky-400/20 text-gray-600">
             <div class="py-10 max-w-screen-xl mx-auto px-4">
-                <h2 class="text-4xl font-bold tracking-tight pb-8 pt-12 sm:text-5xl">Portfolio</h2>
-                <ul class="slick-two slick-two--arrow -mx-4 pb-10 mb-10" data-aos="fade-up" data-aos-anchor-placement="top" data-aos-duration="1000">                
+                <h2 class="text-4xl font-bold tracking-tight pt-12 sm:text-5xl text-sky-600">Selected Works</h2>
+                <h5 class="text-2xl font-bold pb-2">The Importance of a Strong Brand Positioning</h5>
+                <p>Creating a Consistent Brand Identity Across All Touchpoints</p>
+                <ul class="slick-two slick-two--arrow -mx-4 pb-10 my-10" data-aos="fade-up" data-aos-anchor-placement="top" data-aos-duration="1000">                
                     <?php $the_query = new WP_Query('post_type=portfolio'); ?>                        
                     <?php while ($the_query -> have_posts()) : $the_query -> the_post(); ?>
                     <li class="px-5 mb-4 grayscale hover:grayscale-0 ease-in duration-300">
@@ -149,8 +177,10 @@
 
         <div class="px-4 sm:px-6 md:max-w-8xl md:px-4 lg:px-12 ">
             <div class="py-10">
-                <h2 class="text-4xl font-bold tracking-tight pb-8 pt-12 dark:text-zinc-100 sm:text-5xl">News & Events</h2>
-                <ul class="slick-three -mx-4">
+                <h2 class="text-4xl font-bold tracking-tight pt-12 text-sky-600 sm:text-5xl">News & Events</h2>
+                <h5 class="text-2xl font-bold tracking-tight pb-2">Building brands, Creating products & Transforming business.</h5>
+                <p>We wants to stand out in the market and accomplish its goals must have a strong brand positioning.</p>
+                <ul class="slick-three -mx-4 pt-8">
                 
                         <?php $the_query = new WP_Query( 'posts_per_page=5' ); ?>
                         <?php while ($the_query -> have_posts()) : $the_query -> the_post(); ?>
@@ -168,9 +198,10 @@
                                     </a>
                                 </figure>
                             </div>
-                            <div class="p-8">
+                            <div class="p-8 space-y-2">
+                                <a class="text-sm font-medium px-2.5 pt-0.5 pb-1 rounded bg-primary hover:bg-secondary text-white transition duration-300 ease-in" href="<?php the_permalink(); ?>"><?php $categories = get_the_category(); if ( ! empty( $categories ) ) { echo esc_html( $categories[0]->name ); } ?></a>
                                 <h5 class="mb-3 text-xl font-bold"><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h5>
-                                <div class="card-text text-md text-gray-500"><?php echo wp_trim_words( get_the_content(), 20, '...' );?></div>
+                                <div class="card-text text-md text-gray-500 hidden"><?php echo wp_trim_words( get_the_content(), 20, '...' );?></div>
                                 <div class="text-gray-300 mt-4 flex justify-end item-center">
                                     <small class="text-muted"><?php echo time_ago(); ?></small>
                                 </div>

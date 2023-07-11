@@ -31,7 +31,7 @@ module.exports = {
     colors: {
       white: '#ffffff',
       default: '#000000',
-      primary: '#525252',
+      primary: '#334155',
       secondary: '#facc15',
       black:    '#000000',
       sky: {
@@ -55,7 +55,7 @@ module.exports = {
     backgroundColor: theme => ({
       ...theme('colors'),
       'default': '#000000',
-      'primary': '#0ea5e9',
+      'primary': '#334155',
       'secondary': '#22c55e',
     }),
     extend: {},
