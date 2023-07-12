@@ -35,7 +35,7 @@ $(document).ready(function() {
         autoplaySpeed:6000,
         focusOnSelect: true,
         autoplay: true,
-        speed: 1000,
+        speed:3000,
         arrows: true,
         dots: false,
         responsive: [{
