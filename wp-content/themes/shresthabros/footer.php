@@ -13,7 +13,7 @@
 
 	<footer id="colophon" class="site-footer bg-white">
 		<div class="max-w-screen-xl mx-auto px-4">
-			<div class="py-20 flex space-x-20">
+			<div class="py-20 md:flex space-y-10 md:space-y-0 md:space-x-10 lg:space-x-20">
 				<div>
 					<h3 class="text-2xl font-lora font-black pb-4">Social</h3>
 					<?php
@@ -42,7 +42,7 @@
 				</div>
 				<div>
 					<h3 class="text-2xl font-lora font-black pb-4">Contact Information</h3>
-					<div class="grid grid-cols-3 space-x-20">
+					<div class="sm:grid sm:grid-cols-3 space-y-10 sm:space-y-0 sm:space-x-10 lg:space-x-20">
 						<div>
 							<div class="text-sm tracking-[0.2em]">ADDRESS</div>
 							<p class="text-sm pb-5">
