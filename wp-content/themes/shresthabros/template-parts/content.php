@@ -13,9 +13,9 @@
 	<header class="entry-header">
 		<?php
 		if ( is_singular() ) :
-			the_title( '<h1 class="entry-title">', '</h1>' );
+			the_title( '<h2 class="text-4xl font-bold tracking-tight text-sky-600 sm:text-5xl pb-5">', '</h2>' );
 		else :
-			the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
+			the_title( '<h2 class="text-4xl font-bold tracking-tight text-sky-600 sm:text-5xl pb-5"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
 		endif;
 
 		if ( 'post' === get_post_type() ) :
@@ -28,8 +28,10 @@
 			</div><!-- .entry-meta -->
 		<?php endif; ?>
 	</header><!-- .entry-header -->
-
-	<?php shresthabros_post_thumbnail(); ?>
+	
+	<div class="pb-10">
+		<?php shresthabros_post_thumbnail(); ?>
+	</div>
 
 	<div class="entry-content">
 		<?php

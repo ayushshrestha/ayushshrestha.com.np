@@ -10,7 +10,7 @@
 get_header();
 ?>
 
-	<main id="primary" class="site-main">
+	<main id="primary" class="mx-10 mt-5 mb-10 bg-white p-16">
 
 		<?php
 		while ( have_posts() ) :

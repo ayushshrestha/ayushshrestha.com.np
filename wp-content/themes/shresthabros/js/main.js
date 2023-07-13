@@ -38,11 +38,10 @@ $(document).ready(function() {
         speed:3000,
         arrows: true,
         dots: false,
-        responsive: [{
-                breakpoint: 991
-            },
+        //centerMode: true,
+        responsive: [
             {
-                breakpoint: 767,
+                breakpoint: 991,
                 settings: {
                     slidesToShow: 2,
                 }
