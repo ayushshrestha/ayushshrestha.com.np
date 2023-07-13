@@ -7,7 +7,7 @@ module.exports = {
   ],
   theme: {
     fontFamily: {
-      'lora': ['Lora, sans-serif'],
+      'Sansita': ['Sansita, sans-serif'],
       'body': ['Roboto, sans-serif'],
     },
     fontSize: {

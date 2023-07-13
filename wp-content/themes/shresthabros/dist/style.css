@@ -699,11 +699,6 @@ video {
   margin-right: auto;
 }
 
-.my-10 {
-  margin-top: 2.5rem;
-  margin-bottom: 2.5rem;
-}
-
 .my-2 {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
@@ -762,10 +757,6 @@ video {
 
 .ml-3 {
   margin-left: 0.75rem;
-}
-
-.mt-10 {
-  margin-top: 2.5rem;
 }
 
 .mt-2 {
@@ -1083,6 +1074,10 @@ video {
   background-color: rgb(0 0 0 / 0.6);
 }
 
+.bg-default\/100 {
+  background-color: rgb(0 0 0 / 1);
+}
+
 .bg-gray-50 {
   --tw-bg-opacity: 1;
   background-color: rgb(249 250 251 / var(--tw-bg-opacity));
@@ -1120,12 +1115,12 @@ video {
   background-color: rgb(255 255 255 / 0.9);
 }
 
-.p-1 {
-  padding: 0.25rem;
+.bg-default\/10 {
+  background-color: rgb(0 0 0 / 0.1);
 }
 
-.p-10 {
-  padding: 2.5rem;
+.p-1 {
+  padding: 0.25rem;
 }
 
 .p-16 {
@@ -1205,11 +1200,6 @@ video {
   padding-bottom: 0.5rem;
 }
 
-.py-20 {
-  padding-top: 5rem;
-  padding-bottom: 5rem;
-}
-
 .py-3 {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
@@ -1273,12 +1263,12 @@ video {
   padding-top: 0.125rem;
 }
 
-.pt-12 {
-  padding-top: 3rem;
-}
-
 .pt-3 {
   padding-top: 0.75rem;
+}
+
+.pt-5 {
+  padding-top: 1.25rem;
 }
 
 .pt-8 {
@@ -1293,8 +1283,12 @@ video {
   text-align: right;
 }
 
-.font-lora {
-  font-family: Lora, sans-serif;
+.font-Sansita {
+  font-family: Sansita, sans-serif;
+}
+
+.font-body {
+  font-family: Roboto, sans-serif;
 }
 
 .text-2xl {
@@ -1348,6 +1342,10 @@ video {
 .ordinal {
   --tw-ordinal: ordinal;
   font-variant-numeric: var(--tw-ordinal) var(--tw-slashed-zero) var(--tw-numeric-figure) var(--tw-numeric-spacing) var(--tw-numeric-fraction);
+}
+
+.leading-8 {
+  line-height: 2rem;
 }
 
 .tracking-\[-0\.04em\] {
@@ -1721,11 +1719,6 @@ Header
     margin-bottom: calc(0px * var(--tw-space-y-reverse));
   }
 
-  .sm\:px-6 {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-  }
-
   .sm\:text-5xl {
     font-size: 3.052rem;
   }
@@ -1755,6 +1748,10 @@ Header
     margin-bottom: 0px;
   }
 
+  .md\:mt-10 {
+    margin-top: 2.5rem;
+  }
+
   .md\:flex {
     display: flex;
   }
@@ -1767,12 +1764,12 @@ Header
     width: 66.666667%;
   }
 
-  .md\:grid-cols-2 {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
   .md\:grid-cols-1 {
     grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+
+  .md\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .md\:gap-10 {
@@ -1804,14 +1801,19 @@ Header
     padding-right: 2.5rem;
   }
 
-  .md\:px-4 {
-    padding-left: 1rem;
-    padding-right: 1rem;
+  .md\:py-0 {
+    padding-top: 0px;
+    padding-bottom: 0px;
   }
 
   .md\:py-10 {
     padding-top: 2.5rem;
     padding-bottom: 2.5rem;
+  }
+
+  .md\:py-20 {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
   }
 
   .md\:py-32 {
@@ -1824,12 +1826,12 @@ Header
     padding-bottom: 10rem;
   }
 
-  .md\:pt-12 {
-    padding-top: 3rem;
-  }
-
   .md\:pb-10 {
     padding-bottom: 2.5rem;
+  }
+
+  .md\:pt-12 {
+    padding-top: 3rem;
   }
 
   .md\:text-2xl {

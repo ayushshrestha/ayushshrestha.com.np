@@ -35,12 +35,12 @@
                 
                 <div class="absolute inset-0 h-full w-full z-10 bg-sky-400/40 opacity-100"></div>
                 
-                <div class="p-10 lg:p-20 absolute z-20 bottom-0 w-full"> 
+                <div class="p-6 md:p-10 lg:p-20 absolute z-20 bottom-0 w-full"> 
                     <div class="slick-one_sync">
                         <?php while ($the_query -> have_posts()) : $the_query -> the_post(); ?>
                             <div>
                                 <h5 class="text-white text-md"><?php the_field('year'); ?></h5>
-                                <h4 class="text-white text-2xl lg:text-20xl font-bold font-lora"><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h4>
+                                <h4 class="text-white text-3xl lg:text-20xl font-bolder font-Sansita"><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h4>
                                 <h5 class="text-white md:text-2xl 2xl:text-3xl text-wrap"><?php echo wp_trim_words( get_the_content(), 30, '...' );?></h5>
                             </div>
                         <?php endwhile; ?>  
@@ -50,10 +50,10 @@
             </div>
         </div>
 
-        <div class="p-4 sm:px-6 lg:px-12 md:py-32 relative overflow-hidden bg-sky-300">
+        <div class="p-6 md:p-10 lg:px-12 md:py-32 relative overflow-hidden bg-sky-300">
             <div class="grid lg:grid-cols-3 gap-4 h-full">
                 <div class="sticky top-0 mb-10 md:mb-0">
-                    <h2 class="text-4xl font-bold tracking-tight sm:text-5xl text-sky-600">Services</h2>
+                    <h2 class="text-4xl font-bold font-Sansita tracking-tight sm:text-5xl text-sky-600">Services</h2>
                     <p class="mb-5">Producing Outstanding Interactive Products around Across Platforms</p>
                     <a class="rounded-3xl text-sm font-semibold py-3 px-8 bg-gray-900 text-white hover:bg-gray-700">
                         <span>View <span class="hidden sm:inline">More</span> 
@@ -75,7 +75,7 @@
                                     </a>
                                 </div>
                                 <div class="py-6">
-                                    <h4 class="text-2xl mb-2 font-bold font-lora"><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h4>
+                                    <h4 class="text-2xl mb-2 font-bolder font-Sansita"><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h4>
                                     <div class="card-text text-md text-gray-500"><?php echo wp_trim_words( get_the_content(), 20, '...' );?></div>
                                     <div class="text-gray-300 mt-4">
                                         <small><a href="<?php the_permalink() ?>" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-sm font-medium text-center text-primary hover:text-secondary transition duration-300">About <?php the_title(); ?>  <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
@@ -91,11 +91,11 @@
             </div>
         </div>
 
-        <div class="px-4 sm:px-6 md:px-4 lg:px-12 relative overflow-hidden bg-sky-400/20 text-gray-600">
+        <div class="p-6 md:p-10 lg:px-12 relative overflow-hidden bg-sky-400/20 text-gray-600">
             <div class="py-5 md:py-10">
-                <h2 class="text-4xl font-bold tracking-tight md:pt-12 sm:text-5xl text-sky-600">Selected Works</h2>
-                <h5 class="text-2xl font-bold">The Importance of a Strong Brand Positioning</h5>
-                <p>Creating a Consistent Brand Identity Across All Touchpoints</p>
+                <h2 class="text-4xl font-bold font-Sansita tracking-tight md:pt-12 sm:text-5xl text-sky-600">Selected Works</h2>
+                <h5 class="text-2xl font-bold leading-8 mb-3">The Importance of a Strong Brand Positioning</h5>
+                <p class="mb-5">Creating a Consistent Brand Identity Across All Touchpoints</p>
                 <ul class="slick-two slick-two--arrow -mx-4 md:5 md:pb-10 md:my-10" data-aos="fade-up" data-aos-anchor-placement="top" data-aos-duration="1000">                
                     <?php $the_query = new WP_Query('post_type=portfolio'); ?>                        
                     <?php while ($the_query -> have_posts()) : $the_query -> the_post(); ?>
@@ -124,7 +124,7 @@
                                         }
                                     }
                                 ?>
-                                <h4 class="mt-4 mb-2 text-2xl font-bold font-lora"><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h4>
+                                <h4 class="mt-4 mb-2 text-2xl font-bolder font-Sansita"><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h4>
                                 <p><?php echo wp_trim_words( get_the_content(), 30, '...' );?></p>
                             </div>
                         </div>
@@ -134,11 +134,11 @@
             </div>
         </div>
 
-        <div class="px-4 sm:px-6 md:px-4 lg:px-12 relative overflow-hidden bg-sky-400/20 text-gray-600">
+        <div class="p-6 md:p-10 lg:px-12 relative overflow-hidden bg-sky-400/20 text-gray-600">
             <div class="py-5 md:py-10">
-                <h2 class="text-4xl font-bold tracking-tight md:pt-12 sm:text-5xl text-sky-600">Teams</h2>
-                <h5 class="text-2xl font-bold">The Importance of a Strong Brand Positioning</h5>
-                <p>Creating a Consistent Brand Identity Across All Touchpoints</p>
+                <h2 class="text-4xl font-bold font-Sansita tracking-tight md:pt-12 sm:text-5xl text-sky-600">Teams</h2>
+                <h5 class="text-2xl font-bold leading-8 mb-3">The Importance of a Strong Brand Positioning</h5>
+                <p class="mb-5">Creating a Consistent Brand Identity Across All Touchpoints</p>
                 <ul class="slick-two slick-two--arrow -mx-4 md:5 md:pb-10 md:my-10" data-aos="fade-up" data-aos-anchor-placement="top" data-aos-duration="1000">                
                     <?php $the_query = new WP_Query('post_type=team'); ?>                        
                     <?php while ($the_query -> have_posts()) : $the_query -> the_post(); ?>
@@ -167,7 +167,7 @@
                                         }
                                     }
                                 ?>
-                                <h4 class="mt-4 mb-2 text-2xl font-bold font-lora"><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h4>
+                                <h4 class="mt-4 mb-2 text-2xl font-bolder font-Sansita"><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h4>
                                 <p><?php echo wp_trim_words( get_the_content(), 30, '...' );?></p>
                             </div>
                         </div>
@@ -181,13 +181,13 @@
 
 
 
-        <div class="px-4 sm:px-6 md:max-w-8xl md:px-4 lg:px-12 ">
-            <div class="py-5 md:py-10">
-                <h2 class="text-4xl font-bold tracking-tight pt-12 text-sky-600 sm:text-5xl">News & Events</h2>
+        <div class="p-6 md:p-10 lg:px-12 md:max-w-8xl">
+            <div class="pt-5 md:py-10">
+                <h2 class="text-4xl font-bold font-Sansita tracking-tight md:pt-12 text-sky-600 sm:text-5xl">News & Events</h2>
                 <div class="md:flex align-items-center justify-between">
                     <div class="mb-10 md:mb-0">
-                        <h5 class="text-2xl font-bold tracking-tight">Building brands, Creating products & Transforming business.</h5>
-                        <p>We wants to stand out in the market and accomplish its goals must have a strong brand positioning.</p>
+                        <h5 class="text-2xl font-bold tracking-tight leading-8 mb-3">Building brands, Creating products & Transforming business.</h5>
+                        <p class="mb-5">We wants to stand out in the market and accomplish its goals must have a strong brand positioning.</p>
                     </div>
                     <div>
                         <a class="rounded-3xl text-sm font-semibold py-3 px-8 bg-gray-900 text-white hover:bg-gray-700">
@@ -200,7 +200,7 @@
                         <?php $the_query = new WP_Query( 'posts_per_page=5' ); ?>
                         <?php while ($the_query -> have_posts()) : $the_query -> the_post(); ?>
                     
-                    <li class="px-5 mb-4 h-full grayscale hover:grayscale-0 ease-in duration-300">
+                    <li class="px-5 h-full grayscale hover:grayscale-0 ease-in duration-300">
                         <div class="relative overflow-hidden bg-white h-full">
                             <div class="image ease-in duration-300">
                                 <figure>
@@ -231,10 +231,12 @@
         
         <?php if( have_rows('letshavesomecoffee') ): ?>
         <?php while( have_rows('letshavesomecoffee') ): the_row(); $letsWorkBannerImage = get_sub_field('lets_work_background_image');?>
-        <div class="text-center relative mt-10" style="background:url('<?php echo $letsWorkBannerImage['url'];?>') no-repeat center center; background-size:cover;">
+        <div class="text-center relative md:mt-10" style="background:url('<?php echo $letsWorkBannerImage['url'];?>') no-repeat center center; background-size:cover;">
             <div class="w-full py-10 md:py-40 bg-black/60">
-                <div class="max-w-screen-sm mx-auto px-4 text-white">
-                    <h2 class="mb-3 text-4xl font-bold tracking-[-0.04em] sm:leading-[3.5rem]"><?php the_sub_field('lets_work_title'); ?></h2>
+                <div class="p-6 md:p-10 lg:px-12 max-w-screen-sm mx-auto text-white">
+                    <h2 class="mb-3 text-4xl font-bold font-Sansita tracking-[-0.04em] sm:leading-[3.5rem]">
+                        <?php the_sub_field('lets_work_title'); ?>
+                    </h2>
                     <h3 class="mb-8 text-xl"><?php the_sub_field('lets_work_paragraph'); ?></h3>
                     <a href="" title="Email us" class="bg-transparent hover:bg-secondary text-secondary font-semibold sm:leading-[3.5rem] hover:text-white py-4 px-8 border border-secondary hover:border-transparent rounded transition">Email us</a>
                 </div>

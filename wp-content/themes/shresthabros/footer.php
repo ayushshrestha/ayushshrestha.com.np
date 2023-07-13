@@ -11,11 +11,11 @@
 
 ?>
 
-	<footer id="colophon" class="site-footer bg-white">
-		<div class="max-w-screen-xl mx-auto px-4">
-			<div class="py-20 md:flex space-y-10 md:space-y-0 md:space-x-10 lg:space-x-20">
+	<footer id="colophon" class="p-6 md:p-10 lg:px-12 bg-white">
+		<div class="max-w-screen-xl mx-auto">
+			<div class="py-5 md:py-20 md:flex space-y-5 md:space-y-0 md:space-x-10 lg:space-x-20">
 				<div>
-					<h3 class="text-2xl font-lora font-black pb-4">Social</h3>
+					<h3 class="text-2xl font-Sansita font-black pb-4">Social</h3>
 					<?php
 					$wpFooterOneNavMenu = array(
 						'container'     => '',
@@ -28,7 +28,7 @@
 					wp_nav_menu($wpFooterOneNavMenu); ?>
 				</div>
 				<div>
-					<h3 class="text-2xl font-lora font-black pb-4">About</h3>
+					<h3 class="text-2xl font-Sansita font-black pb-4">About</h3>
 					<?php
 					$wpFooterTwoNavMenu = array(
 						'container'     => '',
@@ -41,7 +41,7 @@
 					wp_nav_menu($wpFooterTwoNavMenu); ?>
 				</div>
 				<div>
-					<h3 class="text-2xl font-lora font-black pb-4">Contact Information</h3>
+					<h3 class="text-2xl font-Sansita font-black pb-4">Contact Information</h3>
 					<div class="sm:grid sm:grid-cols-3 space-y-10 sm:space-y-0 sm:space-x-10 lg:space-x-20">
 						<div>
 							<div class="text-sm tracking-[0.2em]">ADDRESS</div>
