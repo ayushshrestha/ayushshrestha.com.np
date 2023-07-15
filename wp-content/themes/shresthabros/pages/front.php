@@ -134,7 +134,7 @@
             </div>
         </div>
 
-        <div class="p-6 md:p-10 lg:px-12 relative overflow-hidden bg-sky-400/20 text-gray-600">
+        <div class="p-6 md:p-10 lg:px-12 relative overflow-hidden bg-sky-400/20 text-gray-600 hidden">
             <div class="py-5 md:py-10">
                 <h2 class="text-4xl font-bold font-Sansita tracking-tight md:pt-12 sm:text-5xl text-sky-600">Teams</h2>
                 <h5 class="text-2xl font-bold leading-8 mb-3">The Importance of a Strong Brand Positioning</h5>
