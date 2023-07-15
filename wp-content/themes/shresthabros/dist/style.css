@@ -1074,10 +1074,6 @@ video {
   background-color: rgb(0 0 0 / 0.6);
 }
 
-.bg-default\/100 {
-  background-color: rgb(0 0 0 / 1);
-}
-
 .bg-gray-50 {
   --tw-bg-opacity: 1;
   background-color: rgb(249 250 251 / var(--tw-bg-opacity));
@@ -1113,10 +1109,6 @@ video {
 
 .bg-white\/90 {
   background-color: rgb(255 255 255 / 0.9);
-}
-
-.bg-default\/10 {
-  background-color: rgb(0 0 0 / 0.1);
 }
 
 .p-1 {
@@ -1801,11 +1793,6 @@ Header
     padding-right: 2.5rem;
   }
 
-  .md\:py-0 {
-    padding-top: 0px;
-    padding-bottom: 0px;
-  }
-
   .md\:py-10 {
     padding-top: 2.5rem;
     padding-bottom: 2.5rem;
@@ -1836,6 +1823,14 @@ Header
 
   .md\:text-2xl {
     font-size: 1.6rem;
+  }
+
+  .md\:text-20xl {
+    font-size: 10rem;
+  }
+
+  .md\:text-5xl {
+    font-size: 3.052rem;
   }
 }
 
