@@ -1,0 +1,8 @@
+[30-Nov-2022 07:08:44 America/Chicago] PHP Fatal error:  Uncaught Error: Class 'WP_Widget' not found in /home3/shrestha/public_html/ayushshrestha.com.np/wp-includes/widgets/class-wp-widget-tag-cloud.php:17
+Stack trace:
+#0 {main}
+  thrown in /home3/shrestha/public_html/ayushshrestha.com.np/wp-includes/widgets/class-wp-widget-tag-cloud.php on line 17
+[25-Jan-2023 15:19:14 America/Chicago] PHP Fatal error:  Uncaught Error: Class 'WP_Widget' not found in /home3/shrestha/public_html/ayushshrestha.com.np/wp-includes/widgets/class-wp-widget-tag-cloud.php:17
+Stack trace:
+#0 {main}
+  thrown in /home3/shrestha/public_html/ayushshrestha.com.np/wp-includes/widgets/class-wp-widget-tag-cloud.php on line 17
