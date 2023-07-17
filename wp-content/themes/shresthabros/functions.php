@@ -165,6 +165,19 @@ function add_additional_class_on_li($classes, $item, $wpNavMenu) {
 }
 add_filter('nav_menu_css_class', 'add_additional_class_on_li', 1, 3);
 
+
+
+add_filter( 'nav_menu_submenu_css_class', 'some_function', 10, 3 );
+function some_function( $classes, $args, $depth ){
+    foreach ( $classes as $key => $class ) {
+    if ( $class == 'sub-menu' ) {
+        $classes[ $key ] = 'menu-sub md:absolute md:right-0 md:z-10 md:mt-2 md:w-56 md:origin-top-right divide-y divide-gray-100 md:rounded-md md:bg-white md:shadow-lg md:ring-1 md:ring-black md:ring-opacity-5 focus:outline-none';
+    }
+}
+
+return $classes;
+}
+
 /**
  * Enqueue scripts and styles.
  */

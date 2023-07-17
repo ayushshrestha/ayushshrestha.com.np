@@ -11,9 +11,9 @@
 
 ?>
 
-	<footer id="colophon" class="p-6 md:p-10 lg:px-12 bg-white">
+	<footer id="colophon" class="bg-white">
 		<div class="max-w-screen-xl mx-auto">
-			<div class="py-5 md:py-20 md:flex space-y-5 md:space-y-0 md:space-x-10 lg:space-x-20">
+			<div class="p-6 md:p-10 lg:px-12 py-5 md:py-20 md:flex space-y-5 md:space-y-0 md:space-x-10 lg:space-x-20">
 				<div>
 					<h3 class="text-2xl font-Sansita font-black pb-4">Social</h3>
 					<?php

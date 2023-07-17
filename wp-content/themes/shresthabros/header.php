@@ -18,7 +18,11 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700;900&display=swap" rel="stylesheet">
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> 92f6f351ccddd5becff5082819d153b8e0db60f9
 	<link rel="apple-touch-icon" sizes="57x57" href="<?php echo get_template_directory_uri(); ?>/images/icon/apple-icon-57x57.png">
 	<link rel="apple-touch-icon" sizes="60x60" href="<?php echo get_template_directory_uri(); ?>/images/icon/apple-icon-60x60.png">
 	<link rel="apple-touch-icon" sizes="72x72" href="<?php echo get_template_directory_uri(); ?>/images/icon/apple-icon-72x72.png">
@@ -38,47 +42,47 @@
 	<meta name="theme-color" content="#ffffff">
 
 	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-135007453-1"></script>
-	<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag(){dataLayer.push(arguments);}
-		gtag('js', new Date());
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-135007453-1"></script>
+<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
 
-		gtag('config', 'UA-135007453-1');
-	</script>
-	<!-- Load Facebook SDK for JavaScript -->
-		<div id="fb-root"></div>
-		<script>
-			window.fbAsyncInit = function() {
-			FB.init({
-				xfbml            : true,
-				version          : 'v10.0'
-			});
-			};
+	gtag('config', 'UA-135007453-1');
+</script>
+<!-- Load Facebook SDK for JavaScript -->
+      <div id="fb-root"></div>
+      <script>
+        window.fbAsyncInit = function() {
+          FB.init({
+            xfbml            : true,
+            version          : 'v10.0'
+          });
+        };
 
-			(function(d, s, id) {
-			var js, fjs = d.getElementsByTagName(s)[0];
-			if (d.getElementById(id)) return;
-			js = d.createElement(s); js.id = id;
-			js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
-			fjs.parentNode.insertBefore(js, fjs);
-		}(document, 'script', 'facebook-jssdk'));</script>
+        (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));</script>
 
-		<!-- Your Chat Plugin code -->
-		<div class="fb-customerchat"
-			attribution="setup_tool"
-			page_id="150144508394050"
-	theme_color="#000000"
-	logged_in_greeting="Hi! How can we help? "
-	logged_out_greeting="Hi! How can we help? ">
-		</div>
-
+      <!-- Your Chat Plugin code -->
+      <div class="fb-customerchat"
+        attribution="setup_tool"
+        page_id="150144508394050"
+  theme_color="#000000"
+  logged_in_greeting="Hi! How can we help? "
+  logged_out_greeting="Hi! How can we help? ">
+      </div>
+	
 	<?php wp_head(); ?>
 </head>
 
 <body <?php body_class(' bg-gray-50 font-body'); ?>>
 	<?php wp_body_open(); ?>
-	<div id="page" class="site text-gray-700">
+	<div id="page" class="site text-gray-700 ">
 		<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'shresthabros' ); ?></a>
 
 		<header class="sticky top-0 z-30">
@@ -119,9 +123,8 @@
 								'container'     => '',
 								'theme_location'=> 'primary-menu',
 								'items_wrap'        => '<ul class="flex">%3$s</ul>',
-								'depth'         => 1,
 								'fallback_cb'   => false,
-								'add_li_class'  => 'hover:gray-300 rounded-md px-3 py-2 text-sm tracking-widest uppercase'
+								'add_li_class'  => 'hover:bg-primary/5 transition duration-300 px-3 py-2 text-sm tracking-widest uppercase relative'
 								);
 							wp_nav_menu($wpNavMenu);
 						?>
@@ -169,7 +172,6 @@
 									'container'     => '',
 									'theme_location'=> 'menu-1',
 									'items_wrap'        => '<ul>%3$s</ul>',
-									'depth'         => 1,
 									'fallback_cb'   => false,
 									'add_li_class'  => 'hover:gray-700 rounded-md px-3 py-2 text-sm font-medium'
 									);

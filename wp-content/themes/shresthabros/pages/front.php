@@ -13,7 +13,7 @@
  get_header();
 ?>
 
-<main id="primary" class="mx-auto text-lg tracking-tight text-gray-600" >
+<main id="primary" class="mx-auto text-lg tracking-tight text-gray-600 " >
 
         <div class="relative overflow-hidden">
         <?php $the_query = new WP_Query('post_type=hero'); ?>  
@@ -55,7 +55,11 @@
                 <div class="sticky top-0 mb-10 md:mb-0">
                     <h2 class="text-4xl fonbold tracking-tight sm:text-5xl">Services</h2>
                     <p class="mb-5">Building Brands, One Success Story at a Time. Create a Brand That Resonates: Let me Help You Define and Communicate Your Unique Message.</p>
+<<<<<<< HEAD
                     <a href="" class="rounded-3xl text-sm font-semibold py-3 px-8 bg-gray-900 text-white hover:bg-gray-700 transition duration-300">
+=======
+                    <a href="?post_type=service" class="rounded-3xl text-sm font-semibold py-3 px-8 bg-gray-900 text-white hover:bg-gray-700 transition duration-300">
+>>>>>>> 92f6f351ccddd5becff5082819d153b8e0db60f9
                         <span>View More</span> 
                     </a>
                 </div>
@@ -94,8 +98,22 @@
         <div class="p-6 md:p-10 lg:px-12 relative overflow-hidden bg-green-600 text-white">
             <div class="py-5 md:py-10">
                 <h2 class="text-4xl tracking-tight md:pt-12 sm:text-5xl">Selected Works</h2>
+<<<<<<< HEAD
                 <h5 class="text-2xl leading-8 mb-3">The Importance of a Strong Brand Positioning</h5>
                 <p class="mb-5">Creating a Consistent Brand Identity Across All Touchpoints</p>
+=======
+                <div class="md:flex align-items-center justify-between">
+                    <div class="mb-5 md:mb-0">
+                        <h5 class="text-2xl leading-8 mb-3">The Importance of a Strong Brand Positioning</h5>
+                        <p>Creating a Consistent Brand Identity Across All Touchpoints</p>
+                    </div>
+                    <div>
+                        <a href="?post_type=portfolio" class="rounded-3xl text-sm font-semibold py-3 px-8 bg-gray-900 text-white hover:bg-gray-700 transition duration-300">
+                            <span>View <span class="hidden sm:inline">More</span> 
+                        </a>
+                    </div>
+                </div>
+>>>>>>> 92f6f351ccddd5becff5082819d153b8e0db60f9
                 <ul class="slick-two slick-two--arrow -mx-4 md:5 md:pb-10 md:my-10" data-aos="fade-up" data-aos-anchor-placement="top" data-aos-duration="1000">                
                     <?php $the_query = new WP_Query('post_type=portfolio'); ?>                        
                     <?php while ($the_query -> have_posts()) : $the_query -> the_post(); ?>
@@ -190,7 +208,7 @@
                         <p class="mb-5">We wants to stand out in the market and accomplish its goals must have a strong brand positioning.</p>
                     </div>
                     <div>
-                        <a class="rounded-3xl text-sm font-semibold py-3 px-8 bg-gray-900 text-white hover:bg-gray-700">
+                        <a href="?post_type=post" class="rounded-3xl text-sm font-semibold py-3 px-8 bg-gray-900 text-white hover:bg-gray-700 transition duration-300">
                             <span>View <span class="hidden sm:inline">More</span> 
                         </a>
                     </div>

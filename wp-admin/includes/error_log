@@ -10,3 +10,35 @@ Stack trace:
 Stack trace:
 #0 {main}
   thrown in /home3/shrestha/public_html/ayushshrestha.com.np/wp-admin/includes/admin.php on line 16
+[10-Jul-2023 04:46:16 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined function get_locale() in /home3/shrestha/public_html/ayushshrestha.com.np/wp-admin/includes/admin.php:16
+Stack trace:
+#0 {main}
+  thrown in /home3/shrestha/public_html/ayushshrestha.com.np/wp-admin/includes/admin.php on line 16
+[10-Jul-2023 04:46:31 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined function get_locale() in /home3/shrestha/public_html/ayushshrestha.com.np/wp-admin/includes/admin.php:16
+Stack trace:
+#0 {main}
+  thrown in /home3/shrestha/public_html/ayushshrestha.com.np/wp-admin/includes/admin.php on line 16
+[10-Jul-2023 07:03:14 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined function get_locale() in /home3/shrestha/public_html/ayushshrestha.com.np/wp-admin/includes/admin.php:16
+Stack trace:
+#0 {main}
+  thrown in /home3/shrestha/public_html/ayushshrestha.com.np/wp-admin/includes/admin.php on line 16
+[10-Jul-2023 07:03:25 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined function get_locale() in /home3/shrestha/public_html/ayushshrestha.com.np/wp-admin/includes/admin.php:16
+Stack trace:
+#0 {main}
+  thrown in /home3/shrestha/public_html/ayushshrestha.com.np/wp-admin/includes/admin.php on line 16
+[10-Jul-2023 23:53:10 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined function get_locale() in /home3/shrestha/public_html/ayushshrestha.com.np/wp-admin/includes/admin.php:16
+Stack trace:
+#0 {main}
+  thrown in /home3/shrestha/public_html/ayushshrestha.com.np/wp-admin/includes/admin.php on line 16
+[10-Jul-2023 23:53:24 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined function get_locale() in /home3/shrestha/public_html/ayushshrestha.com.np/wp-admin/includes/admin.php:16
+Stack trace:
+#0 {main}
+  thrown in /home3/shrestha/public_html/ayushshrestha.com.np/wp-admin/includes/admin.php on line 16
+[11-Jul-2023 16:11:47 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined function get_locale() in /home3/shrestha/public_html/ayushshrestha.com.np/wp-admin/includes/admin.php:16
+Stack trace:
+#0 {main}
+  thrown in /home3/shrestha/public_html/ayushshrestha.com.np/wp-admin/includes/admin.php on line 16
+[11-Jul-2023 16:11:53 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined function get_locale() in /home3/shrestha/public_html/ayushshrestha.com.np/wp-admin/includes/admin.php:16
+Stack trace:
+#0 {main}
+  thrown in /home3/shrestha/public_html/ayushshrestha.com.np/wp-admin/includes/admin.php on line 16

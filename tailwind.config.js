@@ -2,12 +2,15 @@
 module.exports = {
   content: [
     './*.{html,js,php}', 
-    '**/*.php',
-    '*.php',
+    './wp-content/themes/shresthabros/*/*.php',
+    './wp-content/themes/shresthabros/*.php',
   ],
   theme: {
     fontFamily: {
+<<<<<<< HEAD
       //'Sansita': ['Sansita, sans-serif'],
+=======
+>>>>>>> 92f6f351ccddd5becff5082819d153b8e0db60f9
       'body': ['Roboto, sans-serif'],
     },
     fontSize: {
