@@ -16,16 +16,15 @@
 			<div class="p-6 md:p-10 lg:px-12 py-5 md:py-20 md:flex space-y-5 md:space-y-0 md:space-x-10 lg:space-x-20">
 				<div>
 					<h3 class="text-2xl font-Sansita font-black pb-4">Social</h3>
-					<?php
-					$wpFooterOneNavMenu = array(
+					<?php 
+						$wpFooterOneNavMenu = array(
 						'container'     => '',
 						'theme_location'=> 'footer-menu-1',
 						'items_wrap'        => '<ul>%3$s</ul>',
 						'depth'         => 1,
 						'fallback_cb'   => false,
-						'add_li_class'  => 'hover:text-gray-300 pb-2 text-sm transition duration-300'
-						);
-					wp_nav_menu($wpFooterOneNavMenu); ?>
+						'add_li_class'  => 'hover:text-gray-300 pb-2 text-sm transition duration-300' );
+						wp_nav_menu($wpFooterOneNavMenu); ?>
 				</div>
 				<div>
 					<h3 class="text-2xl font-Sansita font-black pb-4">About</h3>
@@ -48,7 +47,7 @@
 							<p class="text-sm pb-5">
 							Kathmandu, Nepal</p>
 							<div class="text-sm tracking-[0.2em]">EMAIL</div>
-							<a href="mailto:info@ayushshrestha.com.np" class="hover:text-gray-300 pb-2 text-sm transition duration-300" title="Email">info@ayushshrestha.com.np</a>
+							<a href="mailto:ayushfrontend@gmail.com" class="hover:text-gray-300 pb-2 text-sm transition duration-300" title="Email">ayushfrontend@gmail.com</a>
 
 						</div>
 						<div>

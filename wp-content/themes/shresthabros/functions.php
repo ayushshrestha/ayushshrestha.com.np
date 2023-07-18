@@ -191,6 +191,7 @@ return $classes;
 // }
 
 
+
 /**
  * Enqueue scripts and styles.
  */
@@ -209,11 +210,15 @@ function shresthabros_scripts() {
 	wp_enqueue_script( 'shresthabros-migrate', '//code.jquery.com/jquery-migrate-1.2.1.min.js', array(), _S_VERSION, true );
 	wp_enqueue_script( 'shresthabros-aos', '//unpkg.com/aos@2.3.1/dist/aos.js', array(), _S_VERSION, true );
 	wp_enqueue_script( 'shresthabros-slick', get_template_directory_uri() . '/js/slick.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'shresthabros-slick', '//unpkg.com/sharect@2.0.0/dist/sharect.js', array(), _S_VERSION, true );
+	
 	wp_enqueue_script( 'shresthabros-main', get_template_directory_uri() . '/js/main.js', array(), _S_VERSION, true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
+
+
 }
 add_action( 'wp_enqueue_scripts', 'shresthabros_scripts' );
 

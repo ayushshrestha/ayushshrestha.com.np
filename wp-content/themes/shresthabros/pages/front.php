@@ -51,10 +51,10 @@
         </div>
 
         <div class="p-6 md:p-10 lg:px-12 md:py-32 relative overflow-hidden bg-sky-300">
-            <div class="grid lg:grid-cols-3 gap-4 h-full">
+            <div class="grid lg:grid-cols-3 gap-14 h-full">
                 <div class="sticky top-0 mb-10 md:mb-0">
                     <h2 class="text-4xl fonbold tracking-tight sm:text-5xl">Services</h2>
-                    <p class="mb-5">Building Brands, One Success Story at a Time. Create a Brand That Resonates: Let me Help You Define and Communicate Your Unique Message.</p>
+                    <p class="mb-5">Building Brands, One Success Story at a Time. <br /> <br /> Create a Brand That Resonates:<br />  Let me Help You Define and Communicate Your Unique Message.</p>
                     <a href="?post_type=service" class="rounded-3xl text-sm font-semibold py-3 px-8 text-gray-900 hover:text-white hover:bg-gray-700x border border-gray-900 transition duration-300 effect-cloudliquid">View More</a>
                 </div>
                 <div class="col-span-2">

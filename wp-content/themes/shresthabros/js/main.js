@@ -82,6 +82,32 @@ $(document).ready(function() {
             }
         ]
     }); 
+
+    $('.slick-four').slick({
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        autoplaySpeed:1200,
+        focusOnSelect: true,
+        autoplay: true,
+        speed: 1200,
+        arrows: true,
+        dots: false,
+        responsive: [
+            {
+                breakpoint: 767,
+                settings: {
+                    slidesToShow: 2,
+                }
+            },
+            {
+                breakpoint: 575,
+                settings: {
+                    slidesToShow: 1,
+                    vertical: false,
+                }
+            }
+        ]
+    });
     
 
 
@@ -94,5 +120,14 @@ $(document).ready(function() {
     $(window).on("load resize scroll",function(e){
         resize();
     });
+
+    Sharect.config({
+            facebook: true,
+            twitter: true,
+            twitterUsername: 'estevanmaito',
+            backgroundColor: '#667EEA',
+            iconColor: '#FFF',
+            selectableElements: ['p'],
+        }).init()
 
 });
