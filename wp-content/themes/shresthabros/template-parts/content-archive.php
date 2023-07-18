@@ -8,6 +8,7 @@
  */
 
 ?>
+
 <article id="post-<?php the_ID(); ?>" <?php post_class("mx-10 mt-5 mb-10 bg-white p-5 md:p-16"); ?>>
 
 	<div class="grid sm:grid-cols-2 md:grid-cols-1 xl:grid-cols-2 gap-10 items-center">

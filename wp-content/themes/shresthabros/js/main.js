@@ -62,7 +62,7 @@ $(document).ready(function() {
         slidesToScroll: 1,
         autoplaySpeed:1200,
         focusOnSelect: true,
-        autoplay: true,
+        autoplay: false,
         speed: 1200,
         arrows: true,
         dots: false,

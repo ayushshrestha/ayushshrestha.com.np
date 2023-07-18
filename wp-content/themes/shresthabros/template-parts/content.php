@@ -8,57 +8,49 @@
  * 
  */
 ?>
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
-		<?php
-		if ( is_singular() ) :
-			the_title( '<h2 class="text-4xl font-black tracking-tight sm:text-5xl pb-5">', '</h2>' );
-		else :
-			the_title( '<h2 class="text-4xl font-black tracking-tight sm:text-5xl pb-5"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
-		endif;
 
-		if ( 'post' === get_post_type() ) :
+<article id="post-<?php the_ID(); ?>" <?php post_class("mx-10 mt-5 mb-10 bg-white p-5 md:p-16"); ?>>
+
+<div class="grid sm:grid-cols-2 md:grid-cols-1 xl:grid-cols-2 gap-10 items-center">
+	<div class="pb-5 sm:pb-0">
+		<div class="image ease-in duration-300">
+			<figure>
+				<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+					<?php if ( has_post_thumbnail() ) {
+						the_post_thumbnail('full', array('class' => 'w-full'));
+					} else { ?>
+						<img src="<?php bloginfo('template_directory'); ?>/images/default-image.jpg" alt="<?php the_title(); ?>" />
+					<?php } ?>
+				</a>
+			</figure>
+		</div>
+	</div>
+
+	<div>
+		<header class="entry-header">
+			<?php
+			if ( is_singular() ) :
+				the_title( '<h2 class="text-4xl font-black tracking-tight sm:text-5xl pb-5">', '</h2>' );
+			else :
+				the_title( '<h2 class="text-4xl font-black tracking-tight sm:text-5xl pb-5"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
+			endif;
+
 			?>
-			<div class="entry-meta">
+		</header><!-- .entry-header -->
+		
+		<div class="entry-content mb-5">
+			<?php echo wp_trim_words( get_the_content(), 20, '...' ); ?>
+		</div><!-- .entry-content -->
+
+		<?php if ( 'post' === get_post_type() ) : ?>
+			<div class="entry-meta pt-3 text-sm text-gray-300 ">
 				<?php
 				shresthabros_posted_on();
 				shresthabros_posted_by();
 				?>
 			</div><!-- .entry-meta -->
 		<?php endif; ?>
-	</header><!-- .entry-header -->
-	
-	<div class="pb-10">
-		<?php shresthabros_post_thumbnail(); ?>
 	</div>
-
-	<div class="entry-content">
-		<?php
-		the_content(
-			sprintf(
-				wp_kses(
-					/* translators: %s: Name of current post. Only visible to screen readers */
-					__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'shresthabros' ),
-					array(
-						'span' => array(
-							'class' => array(),
-						),
-					)
-				),
-				wp_kses_post( get_the_title() )
-			)
-		);
-
-		wp_link_pages(
-			array(
-				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'shresthabros' ),
-				'after'  => '</div>',
-			)
-		);
-		?>
-	</div><!-- .entry-content -->
-
-	<footer class="entry-footer">
-		<?php shresthabros_entry_footer(); ?>
-	</footer><!-- .entry-footer -->
+</div>
 </article><!-- #post-<?php the_ID(); ?> -->
+

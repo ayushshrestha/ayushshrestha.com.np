@@ -9,14 +9,13 @@
 
 get_header();
 ?>
-archive
 	<main id="primary" class="site-main">
-
+archive page
 		<?php if ( have_posts() ) : ?>
 
-			<header class="page-header">
+			<header class="page-header text-center">
 				<?php
-				the_archive_title( '<h1 class="page-title">', '</h1>' );
+				the_archive_title( '<h1 class="text-2xl font-black tracking-tight ">', '</h1>' );
 				the_archive_description( '<div class="archive-description">', '</div>' );
 				?>
 			</header><!-- .page-header -->

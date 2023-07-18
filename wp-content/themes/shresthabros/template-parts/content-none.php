@@ -9,7 +9,7 @@
 
 ?>
 
-<section class="no-results not-found text-center">
+<section class="no-results not-found text-center py-20">
 	<header class="page-header pb-5">
 		<h1 class="font-bold text-3xl"><?php esc_html_e( 'Nothing Found', 'shresthabros' ); ?></h1>
 	</header><!-- .page-header -->

@@ -32,7 +32,7 @@ get_header();
 
 		endwhile; // End of the loop.
 		?>
-		<h2 class="text-4xl font-black tracking-tight pb-5">Related Topics</h2>
+		<h2 class="text-4xl font-black tracking-tight pb-5">More Updates</h2>
 		
 		<ul class="slick-four -mx-4">
 		<?php 

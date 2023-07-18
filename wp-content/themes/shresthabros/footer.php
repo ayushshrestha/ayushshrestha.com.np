@@ -54,7 +54,7 @@
 							<div class="text-sm tracking-[0.2em]">PHONE</div>
 							<p class="text-sm pb-5">+977-(985) - 112 - 2887</p>
 						</div>
-						<div class="w-24"><?php the_custom_logo(); ?></div>
+						<div class="w-8"><?php the_custom_logo(); ?></div>
 					</div>	
 				</div>
 			</div>
