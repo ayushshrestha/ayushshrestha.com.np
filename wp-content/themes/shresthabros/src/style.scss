@@ -28,6 +28,12 @@ p {
     margin-bottom: 1rem;
 }
 
+.logged-in-as a{
+    text-decoration: underline;
+}
+
+
+
 /*
 effects
 -----------------------------------*/
@@ -78,6 +84,11 @@ Header
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
+}
+
+.menu-item-has-children .menu-sub  .menu-sub{
+    position: relative !important;
+     width: 100% !important;
 }
 
 

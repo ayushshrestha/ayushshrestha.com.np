@@ -188,7 +188,7 @@
 
         <div class="p-6 md:p-10 lg:px-12 md:max-w-8xl">
             <div class="pt-5 md:py-10">
-                <h2 class="text-4xl fonbold tracking-tight md:pt-12 sm:text-5xl">News & Events</h2>
+                <h2 class="text-4xl fonbold tracking-tight md:pt-12 sm:text-5xl">Blogs</h2>
                 <div class="md:flex align-items-center justify-between">
                     <div class="mb-10 md:mb-0">
                         <h5 class="text-2xl tracking-tight leading-8 mb-3">Building brands, Creating products & Transforming business.</h5>

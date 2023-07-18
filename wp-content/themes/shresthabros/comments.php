@@ -20,13 +20,13 @@ if ( post_password_required() ) {
 }
 ?>
 
-<div id="comments" class="mx-auto items-center justify-center border-t-4 border-b-4 border-gray-700 my-10 p-10">
+<div id="comments" class="mx-auto items-center justify-center border-t-4 border-b-4x border-gray-700 mt-10 py-10">
 
 	<?php
 	// You can start editing here -- including this comment!
 	if ( have_comments() ) :
 		?>
-		<h2 class="px-4 pt-3 pb-2 text-gray-800 text-lg">
+		<h2 class="px-4x pt-3 pb-2 text-gray-800 text-lg">
 			<?php
 			$shresthabros_comment_count = get_comments_number();
 			if ( '1' === $shresthabros_comment_count ) {

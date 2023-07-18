@@ -9,7 +9,7 @@
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class("mx-10 mt-5 mb-10 bg-white p-5 md:p-16"); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class("mx-10 mt-5 mb-10 bg-white p-5 md:p-16 hover:shadow-md transition duration-300 ease-in-out"); ?>>
 
 	<div class="grid sm:grid-cols-2 md:grid-cols-1 xl:grid-cols-2 gap-10 items-center">
 		<div class="pb-5 sm:pb-0">
@@ -30,15 +30,15 @@
 			<header class="entry-header">
 				<?php
 				if ( is_singular() ) :
-					the_title( '<h2 class="text-4xl font-black tracking-tight sm:text-5xl pb-5">', '</h2>' );
+					the_title( '<h2 class="text-4xl font-black tracking-tight sm:text-5xl">', '</h2>' );
 				else :
-					the_title( '<h2 class="text-4xl font-black tracking-tight sm:text-5xl pb-5"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
+					the_title( '<h2 class="text-4xl font-black tracking-tight sm:text-5xl"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
 				endif;
 
 				?>
 			</header><!-- .entry-header -->
 			
-			<div class="entry-content mb-5">
+			<div class="entry-contentx mb-5">
 				<?php echo wp_trim_words( get_the_content(), 100, '...' ); ?>
 			</div><!-- .entry-content -->
 

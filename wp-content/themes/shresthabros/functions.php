@@ -166,29 +166,17 @@ function add_additional_class_on_li($classes, $item, $wpNavMenu) {
 add_filter('nav_menu_css_class', 'add_additional_class_on_li', 1, 3);
 
 
-
 add_filter( 'nav_menu_submenu_css_class', 'some_function', 10, 3 );
+
 function some_function( $classes, $args, $depth ){
     foreach ( $classes as $key => $class ) {
-    if ( $class == 'sub-menu' ) {
-        $classes[ $key ] = 'menu-sub md:absolute md:right-0 md:z-10 md:mt-2 md:w-56 md:origin-top-right divide-y divide-gray-100 md:rounded-md md:bg-white md:shadow-lg md:ring-1 md:ring-black md:ring-opacity-5 focus:outline-none';
-    }
+		if ( $class == 'sub-menu' ) {
+			$classes[ $key ] = 'menu-sub md:absolute md:right-0 md:z-10 md:mt-2 md:w-56 md:origin-top-right divide-y divide-gray-100 md:rounded-md md:bg-white md:shadow-lg md:ring-1 md:ring-black md:ring-opacity-5 focus:outline-none';
+		}
+	}
+
+	return $classes;
 }
-
-return $classes;
-}
-
-
-// add_filter( 'comment_form_defaults', 'change_comment_form_defaults');
-
-// function change_comment_form_defaults( $default ) {
-//     $commenter = wp_get_current_commenter();	
-//     $default[ 'fields' ][ 'email' ] .= '<p class="comment-form-author">' .
-//         '<label for="city">'. __('City') . '
-//         <span class="required">*</span>
-//         <input id="city" name="city" class="border-slate-200 placeholder-slate-400 contrast-more:border-slate-400 contrast-more:placeholder-slate-500" size="30" type="text" /></p>';
-//     return $default;
-// }
 
 
 
