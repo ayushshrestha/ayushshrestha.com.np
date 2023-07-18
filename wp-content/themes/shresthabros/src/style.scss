@@ -14,7 +14,6 @@
     transform: rotate(25deg);
 }
 
-
 ::-moz-selection { /* Code for Firefox */
     color: theme('colors.primary');
     background: theme('colors.secondary');
@@ -25,6 +24,41 @@
     background: theme('colors.secondary');
 }
 
+p {
+    margin-bottom: 1rem;
+}
+
+/*
+effects
+-----------------------------------*/
+
+.effect-cloudliquid {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    display: table;
+}
+.effect-cloudliquid:hover:after {
+    transform: scaleY(1);
+    transform-origin: top;
+}
+.effect-cloudliquid:after {
+    background-color: theme('colors.primary');
+    border-radius: 50%;
+    bottom: -100%;
+    content: "";
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: -100%;
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition-duration: 1s;
+    transition-property: color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter,-webkit-text-decoration-color,-webkit-backdrop-filter;
+    transition-timing-function: cubic-bezier(.14,0,0,1.01);
+    will-change: transform;
+    z-index: -1;
+}
 
 
 
@@ -32,6 +66,20 @@
 /*
 Header 
 -----------------------------------*/
+
+.menu-item-has-children .menu-sub {
+    opacity: 0;
+    visibility: hidden;
+    transition: ease 0.4s all;
+    transform: translateY(10px);
+}
+
+.menu-item-has-children:hover .menu-sub {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
 
 
 /* image ratio */
@@ -58,7 +106,7 @@ Header
     overflow: hidden;
 }
 
-.image figure a, .image figure span.im {
+.image figure a {
     position: absolute;
     top: 0;
     left: 0;
@@ -69,7 +117,7 @@ Header
     height: 100%;
 }
 
-.image figure a, .image figure span.im {
+.image figure a{
     position: absolute;
     top: 0;
     left: 0;
@@ -81,7 +129,7 @@ Header
 }
 
 .image figure a img {
-    transition: all .5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+    transition: all .5s cubic-bezier(.14,0,0,1.01);
 }
 
 
@@ -139,3 +187,4 @@ Header
 .slick-slider .slick-slider {
     margin: 0 -15px;
 }
+

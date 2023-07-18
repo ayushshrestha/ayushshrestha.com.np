@@ -18,11 +18,7 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700;900&display=swap" rel="stylesheet">
-<<<<<<< HEAD
-
-=======
 	
->>>>>>> 92f6f351ccddd5becff5082819d153b8e0db60f9
 	<link rel="apple-touch-icon" sizes="57x57" href="<?php echo get_template_directory_uri(); ?>/images/icon/apple-icon-57x57.png">
 	<link rel="apple-touch-icon" sizes="60x60" href="<?php echo get_template_directory_uri(); ?>/images/icon/apple-icon-60x60.png">
 	<link rel="apple-touch-icon" sizes="72x72" href="<?php echo get_template_directory_uri(); ?>/images/icon/apple-icon-72x72.png">
@@ -88,7 +84,7 @@
 		<header class="sticky top-0 z-30">
 			<nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
 				<div class="flex">
-					<div class="w-12">
+					<div class="w-7">
 						<?php
 						the_custom_logo();
 						if ( is_front_page() && is_home() ) :

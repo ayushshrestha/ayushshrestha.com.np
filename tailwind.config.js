@@ -7,10 +7,6 @@ module.exports = {
   ],
   theme: {
     fontFamily: {
-<<<<<<< HEAD
-      //'Sansita': ['Sansita, sans-serif'],
-=======
->>>>>>> 92f6f351ccddd5becff5082819d153b8e0db60f9
       'body': ['Roboto, sans-serif'],
     },
     fontSize: {
@@ -42,6 +38,19 @@ module.exports = {
       primary: '#334155',
       secondary: '#facc15',
       black:    '#000000',
+      slate: {
+        50: '#f8fafc',
+        100: '#f1f5f9',
+        200: '#e2e8f0',
+        300: '#cbd5e1',
+        400: '#94a3b8',
+        500: '#64748b',
+        600: '#475569',
+        700: '#334155',
+        800: '#1e293b',
+        900: '#0f172a',
+        950: '#020617',
+      },
       yellow: {
         400: '#fbbf24',
       },
@@ -71,6 +80,7 @@ module.exports = {
       'default': '#000000',
       'primary': '#334155',
       'secondary': '#22c55e',
+      'white': '#ffffff',
     }),
     extend: {},
   },

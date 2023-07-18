@@ -55,13 +55,7 @@
                 <div class="sticky top-0 mb-10 md:mb-0">
                     <h2 class="text-4xl fonbold tracking-tight sm:text-5xl">Services</h2>
                     <p class="mb-5">Building Brands, One Success Story at a Time. Create a Brand That Resonates: Let me Help You Define and Communicate Your Unique Message.</p>
-<<<<<<< HEAD
-                    <a href="" class="rounded-3xl text-sm font-semibold py-3 px-8 bg-gray-900 text-white hover:bg-gray-700 transition duration-300">
-=======
-                    <a href="?post_type=service" class="rounded-3xl text-sm font-semibold py-3 px-8 bg-gray-900 text-white hover:bg-gray-700 transition duration-300">
->>>>>>> 92f6f351ccddd5becff5082819d153b8e0db60f9
-                        <span>View More</span> 
-                    </a>
+                    <a href="?post_type=service" class="rounded-3xl text-sm font-semibold py-3 px-8 text-gray-900 hover:text-white hover:bg-gray-700x border border-gray-900 transition duration-300 effect-cloudliquid">View More</a>
                 </div>
                 <div class="col-span-2">
                     <div class="grid md:grid-cols-2 2xl:grid-cols-3 gap-5 md:gap-10">              
@@ -82,7 +76,7 @@
                                     <h4 class="text-2xl mb-2 font-bold"><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h4>
                                     <div class="card-text text-md text-gray-500"><?php echo wp_trim_words( get_the_content(), 20, '...' );?></div>
                                     <div class="text-gray-300 mt-4">
-                                        <small><a href="<?php the_permalink() ?>" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-sm font-medium text-center text-primary hover:text-secondary transition duration-300">About <?php the_title(); ?>  <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                                        <small><a href="<?php the_permalink() ?>" class="inline-flex items-center text-sm font-medium text-center text-primary hover:text-secondary transition duration-300">About <?php the_title(); ?>  <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
             </svg></a></small>
                                     </div>
@@ -98,26 +92,19 @@
         <div class="p-6 md:p-10 lg:px-12 relative overflow-hidden bg-green-600 text-white">
             <div class="py-5 md:py-10">
                 <h2 class="text-4xl tracking-tight md:pt-12 sm:text-5xl">Selected Works</h2>
-<<<<<<< HEAD
-                <h5 class="text-2xl leading-8 mb-3">The Importance of a Strong Brand Positioning</h5>
-                <p class="mb-5">Creating a Consistent Brand Identity Across All Touchpoints</p>
-=======
                 <div class="md:flex align-items-center justify-between">
                     <div class="mb-5 md:mb-0">
                         <h5 class="text-2xl leading-8 mb-3">The Importance of a Strong Brand Positioning</h5>
                         <p>Creating a Consistent Brand Identity Across All Touchpoints</p>
                     </div>
                     <div>
-                        <a href="?post_type=portfolio" class="rounded-3xl text-sm font-semibold py-3 px-8 bg-gray-900 text-white hover:bg-gray-700 transition duration-300">
-                            <span>View <span class="hidden sm:inline">More</span> 
-                        </a>
+                        <a href="?post_type=portfolio" class="rounded-3xl text-sm font-semibold py-3 px-8 text-gray-900 hover:text-white hover:bg-gray-700x border border-gray-900 transition duration-300 effect-cloudliquid">View More</a>
                     </div>
                 </div>
->>>>>>> 92f6f351ccddd5becff5082819d153b8e0db60f9
                 <ul class="slick-two slick-two--arrow -mx-4 md:5 md:pb-10 md:my-10" data-aos="fade-up" data-aos-anchor-placement="top" data-aos-duration="1000">                
                     <?php $the_query = new WP_Query('post_type=portfolio'); ?>                        
                     <?php while ($the_query -> have_posts()) : $the_query -> the_post(); ?>
-                    <li class="px-5 grayscalex hover:grayscale-0x ease-in duration-300">
+                    <li class="px-5 grayscalex hover:grayscale-0x text-gray-800 hover:text-secondary ease-in duration-300">
                         <div class="grid sm:grid-cols-2 md:grid-cols-1 xl:grid-cols-2 relative overflow-hidden items-center bg-white">
                             <div class="image image-1by1 ease-in duration-300">
                                 <figure>
@@ -130,7 +117,7 @@
                                     </a>
                                 </figure>
                             </div>
-                            <div class="p-5 md:p-10 text-gray-800">
+                            <div class="p-5 md:p-10">
 
                                 <?php 
                                     $post_tags = get_the_tags();
@@ -143,7 +130,7 @@
                                     }
                                 ?>
                                 <h4 class="mt-4 mb-2 text-2xl font-bold"><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h4>
-                                <p><?php echo wp_trim_words( get_the_content(), 30, '...' );?></p>
+                                <p class="text-gray-800 "><?php echo wp_trim_words( get_the_content(), 30, '...' );?></p>
                             </div>
                         </div>
                     </li>
@@ -208,9 +195,7 @@
                         <p class="mb-5">We wants to stand out in the market and accomplish its goals must have a strong brand positioning.</p>
                     </div>
                     <div>
-                        <a href="?post_type=post" class="rounded-3xl text-sm font-semibold py-3 px-8 bg-gray-900 text-white hover:bg-gray-700 transition duration-300">
-                            <span>View <span class="hidden sm:inline">More</span> 
-                        </a>
+                        <a href="?post_type=post" class="rounded-3xl text-sm font-semibold py-3 px-8 text-gray-900 hover:text-white hover:bg-gray-700x border border-gray-900 transition duration-300 effect-cloudliquid">View More</a>
                     </div>
                 </div>
                 <ul class="slick-three -mx-4 pt-8">
@@ -218,7 +203,7 @@
                         <?php $the_query = new WP_Query( 'posts_per_page=5' ); ?>
                         <?php while ($the_query -> have_posts()) : $the_query -> the_post(); ?>
                     
-                    <li class="px-5 h-full grayscalex hover:grayscale-0x ease-in duration-300">
+                    <li class="px-5 h-full grayscalex hover:grayscale-0x hover:text-secondary ease-in duration-300">
                         <div class="relative overflow-hidden bg-white h-full">
                             <div class="image ease-in duration-300">
                                 <figure>
@@ -231,7 +216,7 @@
                                     </a>
                                 </figure>
                             </div>
-                            <div class="p-5 md:p-8  space-y-2">
+                            <div class="p-5 md:p-8 space-y-2">
                                 <a class="text-sm font-medium px-1.5 pt-0.5 pb-1 rounded bg-primary hover:bg-secondary text-white transition duration-300 ease-in" href="<?php the_permalink(); ?>"><?php $categories = get_the_category(); if ( ! empty( $categories ) ) { echo esc_html( $categories[0]->name ); } ?></a>
                                 <h5 class="mb-3 text-xl font-bold"><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h5>
                                 <div class="card-text text-md text-gray-500 hidden"><?php echo wp_trim_words( get_the_content(), 20, '...' );?></div>

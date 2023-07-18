@@ -178,11 +178,24 @@ function some_function( $classes, $args, $depth ){
 return $classes;
 }
 
+
+// add_filter( 'comment_form_defaults', 'change_comment_form_defaults');
+
+// function change_comment_form_defaults( $default ) {
+//     $commenter = wp_get_current_commenter();	
+//     $default[ 'fields' ][ 'email' ] .= '<p class="comment-form-author">' .
+//         '<label for="city">'. __('City') . '
+//         <span class="required">*</span>
+//         <input id="city" name="city" class="border-slate-200 placeholder-slate-400 contrast-more:border-slate-400 contrast-more:placeholder-slate-500" size="30" type="text" /></p>';
+//     return $default;
+// }
+
+
 /**
  * Enqueue scripts and styles.
  */
 function shresthabros_scripts() {
-	//wp_enqueue_style( 'shresthabros-style', get_stylesheet_uri(), array(), _S_VERSION );
+	wp_enqueue_style( 'shresthabros-style', get_stylesheet_uri(), array(), _S_VERSION );
 	//wp_style_add_data( 'shresthabros-style', 'rtl', 'replace' );
 
 	wp_enqueue_style( 'shresthabros-slick', get_template_directory_uri() . '/dist/slick.css', array(), _S_VERSION);
