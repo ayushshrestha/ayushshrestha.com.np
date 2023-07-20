@@ -37,6 +37,7 @@
 	<meta name="msapplication-TileImage" content="<?php echo get_template_directory_uri(); ?>/images/icon/ms-icon-144x144.png">
 	<meta name="theme-color" content="#ffffff">
 
+
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-135007453-1"></script>
 <script>
@@ -81,8 +82,8 @@
 	<div id="page" class="site text-gray-700 ">
 		<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'shresthabros' ); ?></a>
 
-		<header class="sticky top-0 z-30">
-			<nav class="mx-auto flex max-w-7xl items-center justify-between py-6" aria-label="Global">
+		<header class="sticky top-0 z-30 p-3 lg:p-0">
+			<nav class="mx-auto flex max-w-7xl items-center justify-between md:py-6" aria-label="Global">
 				<div class="flex">
 					<div class="w-7">
 						<?php

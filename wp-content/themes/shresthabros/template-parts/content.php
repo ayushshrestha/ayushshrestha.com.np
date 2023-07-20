@@ -8,19 +8,18 @@
  * 
  */
 ?>
-
 <article id="post-<?php the_ID(); ?>" <?php post_class("mb-10"); ?>>
 	<header class="entry-header">
 		<?php
 		if ( is_singular() ) :
-			the_title( '<h2 class="text-4xl font-black tracking-tight sm:text-5xl">', '</h2>' );
+			the_title( '<h2 class="text-2xl md:text-5xl font-black tracking-tight">', '</h2>' );
 		else :
-			the_title( '<h2 class="text-4xl font-black tracking-tight sm:text-5xl"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
+			the_title( '<h2 class="text-2xl md:text-5xl font-black tracking-tight"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
 		endif;
 
 		?>
 	</header><!-- .entry-header -->
-	<div class="py-10">
+	<div class="py-5 md:py-10">
 		<?php if ( has_post_thumbnail() ) {
 			the_post_thumbnail('full', array('class' => ''));
 		} else { ?>
@@ -29,7 +28,10 @@
 	</div>
 
 	<div>
-		<div class="entry-contentx mb-20">
+	<div class="entry-contentx mb-20">
+			<?php the_content(); ?>
+		</div><!-- .entry-content -->
+		<div class="entry-contentx mb-20 hidden">
 			<?php echo wp_trim_words( get_the_content(), 20, '...' ); ?>
 		</div><!-- .entry-content -->
 

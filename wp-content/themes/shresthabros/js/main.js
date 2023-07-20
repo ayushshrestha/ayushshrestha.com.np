@@ -130,7 +130,7 @@ $(document).ready(function() {
     Sharect.config({
             facebook: true,
             twitter: true,
-            twitterUsername: 'estevanmaito',
+            twitterUsername: 'ayushshrestha',
             backgroundColor: '#667EEA',
             iconColor: '#FFF',
             selectableElements: ['p'],

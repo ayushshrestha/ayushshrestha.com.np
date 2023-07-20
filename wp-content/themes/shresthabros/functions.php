@@ -198,7 +198,7 @@ function shresthabros_scripts() {
 	wp_enqueue_script( 'shresthabros-migrate', '//code.jquery.com/jquery-migrate-1.2.1.min.js', array(), _S_VERSION, true );
 	wp_enqueue_script( 'shresthabros-aos', '//unpkg.com/aos@2.3.1/dist/aos.js', array(), _S_VERSION, true );
 	wp_enqueue_script( 'shresthabros-slick', get_template_directory_uri() . '/js/slick.js', array(), _S_VERSION, true );
-	wp_enqueue_script( 'shresthabros-slick', '//unpkg.com/sharect@2.0.0/dist/sharect.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'shresthabros-sharect', '//unpkg.com/sharect@2.0.0/dist/sharect.js', array(), _S_VERSION, true );
 	
 	wp_enqueue_script( 'shresthabros-main', get_template_directory_uri() . '/js/main.js', array(), _S_VERSION, true );
 
@@ -237,3 +237,53 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
+
+
+
+function shresthabros_posts_nav(){
+    $next_post = get_next_post();
+    $prev_post = get_previous_post();
+     
+    if ( $next_post || $prev_post ) : ?>
+     
+        <div class="sm:flex sm:justify-between space-y-5 sm:space-y-0">
+            <div>
+                <?php if ( ! empty( $prev_post ) ) : ?>
+                    <a href="<?php echo get_permalink( $prev_post ); ?>" class="block flex flex-col md:flex-row md:items-center gap-5 p-5 bg-gray-50 hover:bg-gray-100 transition duration-1000 rounded-lg">
+                        <div class="order-last md:order-first">
+                            <div class="shresthabros-posts-nav__thumbnail shresthabros-posts-nav__prev">
+                                <?php echo get_the_post_thumbnail( $prev_post, [ 100, 100 ] ); ?>
+                            </div>
+                        </div>
+                        <div class="md:order-last order-first">
+                            <strong class="flex">
+                                <svg viewBox="0 0 24 24" width="24" height="24"><path d="M13.775,18.707,8.482,13.414a2,2,0,0,1,0-2.828l5.293-5.293,1.414,1.414L9.9,12l5.293,5.293Z"/></svg>
+                                <?php _e( 'Previous article', 'textdomain' ) ?>
+                            </strong>
+                            <h4><?php echo get_the_title( $prev_post ); ?></h4>
+                        </div>
+                    </a>
+                <?php endif; ?>
+            </div>
+            <div>
+                <?php if ( ! empty( $next_post ) ) : ?>
+                    <a href="<?php echo get_permalink( $next_post ); ?>"  class="block md:flex space-y-5 md:space-y-0 items-center gap-5 p-5 bg-gray-50 hover:bg-gray-100 transition duration-1000 rounded-lg">
+                        <div>
+                            <strong class="flex">
+                                <?php _e( 'Next article', 'textdomain' ) ?>
+                                <svg viewBox="0 0 24 24" width="24" height="24"><path d="M10.811,18.707,9.4,17.293,14.689,12,9.4,6.707l1.415-1.414L16.1,10.586a2,2,0,0,1,0,2.828Z"/></svg>
+                            </strong>
+                            <h4><?php echo get_the_title( $next_post ); ?></h4>
+                        </div>
+                        <div>
+                            <div class="shresthabros-posts-nav__thumbnail shresthabros-posts-nav__next">
+                                <?php echo get_the_post_thumbnail( $next_post, [ 100, 100 ] ); ?>
+                            </div>
+                        </div>
+                    </a>
+                <?php endif; ?>
+            </div>
+        </div> <!-- .shresthabros-posts-nav -->
+     
+    <?php endif;
+}

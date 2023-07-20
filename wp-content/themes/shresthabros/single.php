@@ -10,20 +10,14 @@
 get_header();
 ?>
 
-	<main id="primary" class="mx-10 mt-5 mb-10 bg-white p-5 md:p-16">
-
+	<main id="primary" class="mx-3 md:mx-10 mt-5 mb-10 bg-white p-5 md:p-16">
 		<?php
 		while ( have_posts() ) :
 			the_post();
 
 			get_template_part( 'template-parts/content', get_post_type() );
 
-			the_post_navigation(
-				array(
-					'prev_text' => '<span class="nav-subtitle">' . esc_html__( 'Previous:', 'shresthabros' ) . '</span> <span class="nav-title">%title</span>',
-					'next_text' => '<span class="nav-subtitle">' . esc_html__( 'Next:', 'shresthabros' ) . '</span> <span class="nav-title">%title</span>',
-				)
-			);
+			shresthabros_posts_nav();
 
 			// If comments are open or we have at least one comment, load up the comment template.
 			if ( comments_open() || get_comments_number() ) :
@@ -59,7 +53,7 @@ get_header();
 			$related_cats_post = new WP_Query( $query_args );
 		
 			if($related_cats_post->have_posts()): ?>
-	<div class="m-10 mt-20">
+	<div class="m-10 md:mt-20">
 
 			<h2 class="text-2xl font-black tracking-tight pb-5">More Updates</h2>
 			

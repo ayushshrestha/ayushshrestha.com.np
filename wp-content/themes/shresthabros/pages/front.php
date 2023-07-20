@@ -192,7 +192,7 @@
                 <div class="md:flex align-items-center justify-between">
                     <div class="mb-10 md:mb-0">
                         <h5 class="text-2xl tracking-tight leading-8 mb-3">Building brands, Creating products & Transforming business.</h5>
-                        <p class="mb-5">We wants to stand out in the market and accomplish its goals must have a strong brand positioning.</p>
+                        <p class="mb-5">I know that its need to stand out in the market and accomplish its goals must have a strong brand positioning.</p>
                     </div>
                     <div>
                         <a href="?post_type=post" class="rounded-3xl text-sm font-semibold py-3 px-8 text-gray-900 hover:text-white hover:bg-gray-700x border border-gray-900 transition duration-300 effect-cloudliquid">View More</a>
