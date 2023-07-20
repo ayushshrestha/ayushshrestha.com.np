@@ -93,6 +93,7 @@ get_header();
 			</ul>
 		 </div>
 	<?php endif; ?>
+
 <?php
 get_sidebar();
 get_footer();

@@ -118,14 +118,11 @@
                                 </figure>
                             </div>
                             <div class="p-5 md:p-10">
-
                                 <?php 
                                     $post_tags = get_the_tags();
                                     if ( ! empty( $post_tags ) ) {
                                         foreach( $post_tags as $post_tag ) {
-                                            $count++;
-                                            echo '<a class="text-sm font-medium px-1.5 pt-0.5 pb-1 rounded bg-primary hover:bg-secondary text-white transition duration-300 ease-in me-1" href="' . get_tag_link( $post_tag ) . '">' . $post_tag->name . '</a>';
-                                            if( $count > 2 ) break;
+                                            echo '<a class="text-sm font-medium px-1.5 pt-0.5 pb-1 rounded bg-primary hover:bg-secondary text-white transition duration-300 ease-in" href="' . get_tag_link( $post_tag ) . '">' . $post_tag->name . '</a>';
                                         }
                                     }
                                 ?>
@@ -198,36 +195,78 @@
                         <a href="?post_type=post" class="rounded-3xl text-sm font-semibold py-3 px-8 text-gray-900 hover:text-white hover:bg-gray-700x border border-gray-900 transition duration-300 effect-cloudliquid">View More</a>
                     </div>
                 </div>
-                <ul class="slick-three -mx-4 pt-8">
-                
-                        <?php $the_query = new WP_Query( 'posts_per_page=5' ); ?>
-                        <?php while ($the_query -> have_posts()) : $the_query -> the_post(); ?>
+                <ul class="slick-twox -mx-4x pt-8">
+                <li>
                     
-                    <li class="px-5 h-full grayscalex hover:grayscale-0x hover:text-secondary ease-in duration-300">
-                        <div class="relative overflow-hidden bg-white h-full">
-                            <div class="image ease-in duration-300">
-                                <figure>
-                                    <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
-                                        <?php if ( has_post_thumbnail() ) {
-                                            the_post_thumbnail('full', array('class' => 'w-full'));
-                                        } else { ?>
-                                            <img src="<?php bloginfo('template_directory'); ?>/images/default-image.jpg" alt="<?php the_title(); ?>" />
-                                        <?php } ?>
-                                    </a>
-                                </figure>
-                            </div>
-                            <div class="p-5 md:p-8 space-y-2">
-                                <a class="text-sm font-medium px-1.5 pt-0.5 pb-1 rounded bg-primary hover:bg-secondary text-white transition duration-300 ease-in" href="<?php $category = get_the_category();
-$link = get_category_link( $category[0]->term_id ); echo $link; ?>"><?php $categories = get_the_category(); if ( ! empty( $categories ) ) { echo esc_html( $categories[0]->name ); } ?></a>
-                                <h5 class="mb-3 text-xl font-bold"><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h5>
-                                <div class="card-text text-md text-gray-500 hidden"><?php echo wp_trim_words( get_the_content(), 20, '...' );?></div>
-                                <div class="text-gray-300 mt-4 flex justify-end item-center">
-                                    <small class="text-muted"><?php echo time_ago(); ?></small>
+                    <?php 
+                        $args = array( 
+                            'posts_per_page' => '4',
+                            'post_type' =>  'post', 
+                            'numberposts'=> '4'
+                        ); 
+                            $postslist = get_posts( $args );
+                        ?>
+                    
+                        <div class="grid grid-cols-2 gap-5">
+
+                        <div class="relative overflow-hidden bg-white h-full w-full">
+                        <?php
+								
+								foreach (array_slice($postslist,0,1) as $post) :  setup_postdata($post);
+							?>  
+                                <div class="image ease-in duration-300">
+                                    <figure>
+                                        <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+                                            <?php if ( has_post_thumbnail() ) {
+                                                the_post_thumbnail('full', array('class' => 'w-full'));
+                                            } else { ?>
+                                                <img src="<?php bloginfo('template_directory'); ?>/images/default-image.jpg" alt="<?php the_title(); ?>" />
+                                            <?php } ?>
+                                        </a>
+                                    </figure>
                                 </div>
+                                <div class="p-5 md:p-8 space-y-2">
+                                    <a class="text-sm font-medium px-1.5 pt-0.5 pb-1 rounded bg-primary hover:bg-secondary text-white transition duration-300 ease-in" href="<?php $category = get_the_category();
+    $link = get_category_link( $category[0]->term_id ); echo $link; ?>"><?php $categories = get_the_category(); if ( ! empty( $categories ) ) { echo esc_html( $categories[0]->name ); } ?></a>
+                                    <h5 class="mb-3 text-xl font-bold"><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h5>
+                                    <div class="card-text text-md text-gray-500"><?php echo wp_trim_words( get_the_content(), 20, '...' );?></div>
+                                    <div class="text-gray-300 mt-4 flex justify-end item-center">
+                                        <small class="text-muted"><?php echo time_ago(); ?></small>
+                                    </div>
+                                </div>
+                            <?php endforeach; wp_reset_postdata();?>
+
                             </div>
+                            <div class="relative overflow-hidden space-y-5">
+                            <?php foreach (array_slice($postslist,1,5) as $post) :  setup_postdata($post);?> 
+                            <div class=" bg-white grid grid-cols-2">
+                                <div class="image ease-in duration-300">
+                                    <figure>
+                                        <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+                                            <?php if ( has_post_thumbnail() ) {
+                                                the_post_thumbnail('full', array('class' => 'w-full'));
+                                            } else { ?>
+                                                <img src="<?php bloginfo('template_directory'); ?>/images/default-image.jpg" alt="<?php the_title(); ?>" />
+                                            <?php } ?>
+                                        </a>
+                                    </figure>
+                                </div>
+                                <div class="p-5 md:p-8">
+                                    <a class="text-sm font-medium px-1.5 pt-0.5 pb-1 rounded bg-primary hover:bg-secondary text-white transition duration-300 ease-in" href="<?php $category = get_the_category();
+    $link = get_category_link( $category[0]->term_id ); echo $link; ?>"><?php $categories = get_the_category(); if ( ! empty( $categories ) ) { echo esc_html( $categories[0]->name ); } ?></a>
+                                    <h5 class="mb-3 text-xl font-bold"><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h5>
+                                    <div class="card-text text-md text-gray-500 hidden"><?php echo wp_trim_words( get_the_content(), 20, '...' );?></div>
+                                    <div class="text-gray-300 mt-4 flex justify-end item-center">
+                                        <small class="text-muted"><?php echo time_ago(); ?></small>
+                                    </div>
+                                </div>
+                                </div>
+                            <?php endforeach; wp_reset_postdata();?>
+
+                            </div>
+
                         </div>
                     </li>
-                    <?php endwhile; wp_reset_postdata(); ?>
                 </ul>
             </div>
         </div>
@@ -253,5 +292,4 @@ $link = get_category_link( $category[0]->term_id ); echo $link; ?>"><?php $categ
 	</main><!-- #main -->
 
     <?php
-get_sidebar();
 get_footer();
