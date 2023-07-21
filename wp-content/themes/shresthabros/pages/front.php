@@ -16,7 +16,7 @@
 <main id="primary" class="mx-auto text-lg tracking-tight text-gray-600 " >
 
         <div class="relative overflow-hidden">
-        <?php $the_query = new WP_Query('post_type=hero'); ?>  
+            <?php $the_query = new WP_Query('post_type=hero'); ?>  
             <div>
                 <div class="relative hero_banner bg-yellow-400">
                     <div class="absolute h-full w-full md:w-2/3 top-0 end-0 bg-black">
@@ -182,10 +182,6 @@
             </div>
         </div>
 
-
-
-
-
         <div class="p-6 md:p-10 lg:px-12 md:max-w-8xl">
             <div class="pt-5 md:py-10">
                 <h2 class="text-4xl fonbold tracking-tight md:pt-12 sm:text-5xl">Blogs</h2>
@@ -199,11 +195,18 @@
                     </div>
                 </div>
                 <ul class="slick-three -mx-4 pt-8">
-                
-                        <?php $the_query = new WP_Query( 'posts_per_page=5' ); ?>
-                        <?php while ($the_query -> have_posts()) : $the_query -> the_post(); ?>
-                    
-                    <li class="px-5 h-full grayscalex hover:grayscale-0x hover:text-secondary ease-in duration-300">
+                    <?php
+                        // WP_Query arguments
+                        $args = array(
+                            'post_type'              => array('post'), // use any for any kind of post type, custom post type slug for custom post type
+                            'post_status'            => array('publish'), // Also support: pending, draft, auto-draft, future, private, inherit, trash, any
+                            'posts_per_page'         => '5', // use -1 for all post
+                            'order'                  => 'DESC', // Also support: ASC
+                            'orderby'                => 'most_recent', // Also support: none, rand, id, title, slug, modified, parent, menu_order, comment_count
+                        ); ?>
+                    <?php $the_query = new WP_Query( $args); ?>
+                    <?php while ($the_query -> have_posts()) : $the_query -> the_post(); ?>
+                    <li class="px-5 h-full hover:text-secondary ease-in duration-300">
                         <div class="relative overflow-hidden bg-white h-full">
                             <div class="image ease-in duration-300">
                                 <figure>
@@ -217,8 +220,7 @@
                                 </figure>
                             </div>
                             <div class="p-5 md:p-8 space-y-2">
-                                <a class="text-sm font-medium px-1.5 pt-0.5 pb-1 rounded bg-primary hover:bg-secondary text-white transition duration-300 ease-in" href="<?php $category = get_the_category();
-$link = get_category_link( $category[0]->term_id ); echo $link; ?>"><?php $categories = get_the_category(); if ( ! empty( $categories ) ) { echo esc_html( $categories[0]->name ); } ?></a>
+                                <a class="text-sm font-medium px-1.5 pt-0.5 pb-1 rounded bg-primary hover:bg-secondary text-white transition duration-300 ease-in" href="<?php $category = get_the_category(); $link = get_category_link( $category[0]->term_id ); echo $link; ?>"><?php $categories = get_the_category(); if ( ! empty( $categories ) ) { echo esc_html( $categories[0]->name ); } ?></a>
                                 <h5 class="mb-3 text-xl font-bold"><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h5>
                                 <div class="card-text text-md text-gray-500 hidden"><?php echo wp_trim_words( get_the_content(), 20, '...' );?></div>
                                 <div class="text-gray-300 mt-4 flex justify-end item-center">

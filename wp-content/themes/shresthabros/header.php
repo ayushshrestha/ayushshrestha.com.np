@@ -37,6 +37,8 @@
 	<meta name="msapplication-TileImage" content="<?php echo get_template_directory_uri(); ?>/images/icon/ms-icon-144x144.png">
 	<meta name="theme-color" content="#ffffff">
 
+	<meta property="fb:app_id" content="CONTENT HERE">
+	<meta property="fb:admins" content="CONTENT HERE">
 
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-135007453-1"></script>

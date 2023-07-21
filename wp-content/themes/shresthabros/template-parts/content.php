@@ -21,7 +21,7 @@
 	</header><!-- .entry-header -->
 	<div class="py-5 md:py-10">
 		<?php if ( has_post_thumbnail() ) {
-			the_post_thumbnail('full', array('class' => ''));
+			the_post_thumbnail('full', array('class' => 'w-full'));
 		} else { ?>
 			<img src="<?php bloginfo('template_directory'); ?>/images/default-image.jpg" alt="<?php the_title(); ?>" />
 		<?php } ?>
