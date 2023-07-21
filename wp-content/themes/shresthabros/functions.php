@@ -166,8 +166,6 @@ function add_additional_class_on_li($classes, $item, $wpNavMenu) {
 add_filter('nav_menu_css_class', 'add_additional_class_on_li', 1, 3);
 
 
-add_filter( 'nav_menu_submenu_css_class', 'some_function', 10, 3 );
-
 function some_function( $classes, $args, $depth ){
     foreach ( $classes as $key => $class ) {
 		if ( $class == 'sub-menu' ) {
@@ -177,6 +175,8 @@ function some_function( $classes, $args, $depth ){
 
 	return $classes;
 }
+
+add_filter( 'nav_menu_submenu_css_class', 'some_function', 10, 3 );
 
 
 
