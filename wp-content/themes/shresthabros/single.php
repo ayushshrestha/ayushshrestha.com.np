@@ -10,7 +10,7 @@
 get_header();
 ?>
 
-	<main id="primary" class="mx-3 md:mx-10 mt-5 mb-10 bg-white p-5 md:p-16">
+	<main id="primary" class="mx-3 md:mx-10 mt-5 mb-10 bg-white p-5 md:p-16" data-scroll-section>
 		<?php
 		while ( have_posts() ) :
 

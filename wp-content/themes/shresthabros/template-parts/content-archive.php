@@ -9,7 +9,7 @@
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class("mx-3 md:mx-10 mt-3 md:mt-5 mb-5 md:mb-10 bg-white p-5 md:p-16 hover:shadow-md transition duration-300 ease-in-out"); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class("mx-3 md:mx-10 mt-3 md:mt-5 mb-5 md:mb-10 bg-white p-5 md:p-16 hover:shadow-md transition duration-300 ease-in-out"); ?> data-scroll-section>
 
 	<div class="grid sm:grid-cols-2 md:grid-cols-1 xl:grid-cols-2 sm:gap-5 md:gap-10 items-center">
 		<div class="pb-5 sm:pb-0">

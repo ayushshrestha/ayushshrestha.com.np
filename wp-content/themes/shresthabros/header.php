@@ -11,7 +11,7 @@
 
 ?>
 <!doctype html>
-<html <?php language_attributes(); ?>>
+<html class="is-smooth-scroll-compatible is-loading" <?php language_attributes(); ?>>
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -79,7 +79,7 @@
 	<?php wp_head(); ?>
 </head>
 
-<body <?php body_class(' bg-gray-50 font-body'); ?>>
+<body <?php body_class(' bg-gray-50 font-body o-scroll'); ?> style="background-color: white !important;"  id="js-scroll" data-scroll-container>
 	<?php wp_body_open(); ?>
 	<div id="page" class="site text-gray-700 ">
 		<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'shresthabros' ); ?></a>

@@ -162,10 +162,10 @@ Header
 .slick-slider .slick-arrow {
     position: relative;
 
-    @media screen(md) {
-        position: absolute;
-        bottom: 0;
-    }
+    // @media screen(md) {
+    //     position: absolute;
+    //     bottom: 0;
+    // }
     
     width: 48px;
     height: 48px;

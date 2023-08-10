@@ -189,6 +189,7 @@ function shresthabros_scripts() {
 
 	wp_enqueue_style( 'shresthabros-slick', get_template_directory_uri() . '/dist/slick.css', array(), _S_VERSION);
 	wp_enqueue_style( 'shresthabros-aos', '//unpkg.com/aos@2.3.1/dist/aos.css', array(), _S_VERSION);
+	wp_enqueue_style( 'shresthabros-scroll', get_template_directory_uri() . '/dist/scroll.css', array(), _S_VERSION);
 	wp_enqueue_style( 'shresthabros-slicktheme', get_template_directory_uri() . '/dist/slick-theme.css', array(), _S_VERSION);
 	wp_enqueue_style( 'shresthabros-tailwind-style', get_template_directory_uri() . '/dist/style.css', array(), _S_VERSION);
 	wp_enqueue_style( 'shresthabros-theme', get_template_directory_uri() . '/dist/theme.css', array(), _S_VERSION);	
@@ -197,6 +198,7 @@ function shresthabros_scripts() {
 	wp_enqueue_script( 'shresthabros-jquery', '//code.jquery.com/jquery-1.11.0.min.js', array(), _S_VERSION, true );
 	wp_enqueue_script( 'shresthabros-migrate', '//code.jquery.com/jquery-migrate-1.2.1.min.js', array(), _S_VERSION, true );
 	wp_enqueue_script( 'shresthabros-aos', '//unpkg.com/aos@2.3.1/dist/aos.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'shresthabros-scroll', get_template_directory_uri() . '/js/scroll-main.js', array(), _S_VERSION, true );
 	wp_enqueue_script( 'shresthabros-slick', get_template_directory_uri() . '/js/slick.js', array(), _S_VERSION, true );
 	wp_enqueue_script( 'shresthabros-sharect', '//unpkg.com/sharect@2.0.0/dist/sharect.js', array(), _S_VERSION, true );
 	

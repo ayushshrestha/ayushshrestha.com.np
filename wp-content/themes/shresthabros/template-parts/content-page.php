@@ -28,7 +28,7 @@ else:
 		</div>
 	</div>
 </div>
-<article id="post-<?php the_ID(); ?>" <?php post_class(' py-10 max-w-screen-xl mx-auto px-4 '); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class(' py-10 max-w-screen-xl mx-auto px-4 '); ?> data-scroll-section>
 	<div class="entry-content">
 		<?php
 		the_content();
