@@ -17,7 +17,7 @@
 				<figure>
 					<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
 						<?php if ( has_post_thumbnail() ) {
-							the_post_thumbnail('full', array());
+							the_post_thumbnail('full', array('class' => 'w-full'));
 						} else { ?>
 							<img src="<?php bloginfo('template_directory'); ?>/images/default-image.jpg" alt="<?php the_title(); ?>" />
 						<?php } ?>

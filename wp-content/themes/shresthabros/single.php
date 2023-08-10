@@ -13,6 +13,9 @@ get_header();
 	<main id="primary" class="mx-3 md:mx-10 mt-5 mb-10 bg-white p-5 md:p-16">
 		<?php
 		while ( have_posts() ) :
+
+			
+
 			the_post();
 
 			get_template_part( 'template-parts/content', get_post_type() );

@@ -61,6 +61,7 @@ $(document).ready(function() {
         slidesToShow: 3,
         slidesToScroll: 1,
         autoplaySpeed:1200,
+        infinite: false,
         focusOnSelect: true,
         autoplay: false,
         speed: 1200,
