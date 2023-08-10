@@ -11,7 +11,7 @@
 
 ?>
 
-	<footer id="colophon" class="bg-white">
+	<footer id="colophon" class="bg-white" data-scroll-section>
 		<div class="max-w-screen-xl mx-auto">
 			<div class="p-6 md:p-10 lg:px-12 py-5 md:py-20 md:flex space-y-5 md:space-y-0 md:space-x-10 lg:space-x-20">
 				<div>
@@ -88,7 +88,10 @@
 	</footer><!-- #colophon -->
 </div><!-- #page -->
 
+<script nomodule src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.6.0/polyfill.min.js" crossorigin="anonymous"></script>
+<script nomodule src="https://polyfill.io/v3/polyfill.min.js?features=Object.assign%2CElement.prototype.append%2CNodeList.prototype.forEach%2CCustomEvent%2Csmoothscroll" crossorigin="anonymous"></script>
 <?php wp_footer(); ?>
+
 <script>
 	$(document).ready(function() {
 		$("body,html").animate({
@@ -100,5 +103,8 @@ scrollTop: 1
 		});
 	});
 </script>
+
+
 </body>
 </html>
+
