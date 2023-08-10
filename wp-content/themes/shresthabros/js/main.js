@@ -32,22 +32,16 @@ $(document).ready(function() {
     $('.slick-two').slick({
         slidesToShow: 2,
         slidesToScroll: 1,
-        autoplaySpeed:1200,
+        autoplaySpeed:4000,
         focusOnSelect: true,
         autoplay: true,
-        speed:1200,
+        speed:2500,
         arrows: true,
         dots: false,
         //centerMode: true,
         responsive: [
             {
-                breakpoint: 991,
-                settings: {
-                    slidesToShow: 2,
-                }
-            },
-            {
-                breakpoint: 767,
+                breakpoint: 1025,
                 settings: {
                     slidesToShow: 1,
                     vertical: false,

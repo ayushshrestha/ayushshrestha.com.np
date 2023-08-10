@@ -143,9 +143,14 @@ Header
     transition: all .5s cubic-bezier(.14,0,0,1.01);
 }
 
+.image.image-1by1 figure a img {
+    object-fit: cover;  
+    object-position: center;
+    height: 100%;
+}
+
 
 /* portfolio */
-
 
 .hero_banner .slick-track {
     height: 100%;
@@ -156,6 +161,7 @@ Header
 
 .slick-slider .slick-arrow {
     position: relative;
+
     @media screen(md) {
         position: absolute;
         bottom: 0;
