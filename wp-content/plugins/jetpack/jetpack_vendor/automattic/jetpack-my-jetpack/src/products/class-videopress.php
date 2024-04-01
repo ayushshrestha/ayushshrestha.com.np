@@ -62,21 +62,21 @@ class Videopress extends Hybrid_Product {
 	public static $has_standalone_plugin = true;
 
 	/**
-	 * Get the internationalized product name
+	 * Get the product name
 	 *
 	 * @return string
 	 */
 	public static function get_name() {
-		return __( 'VideoPress', 'jetpack-my-jetpack' );
+		return 'VideoPress';
 	}
 
 	/**
-	 * Get the internationalized product title
+	 * Get the product title
 	 *
 	 * @return string
 	 */
 	public static function get_title() {
-		return __( 'Jetpack VideoPress', 'jetpack-my-jetpack' );
+		return 'Jetpack VideoPress';
 	}
 
 	/**
@@ -127,6 +127,15 @@ class Videopress extends Hybrid_Product {
 	}
 
 	/**
+	 * Get the URL the user is taken after purchasing the product through the checkout
+	 *
+	 * @return ?string
+	 */
+	public static function get_post_checkout_url() {
+		return self::get_manage_url();
+	}
+
+	/**
 	 * Get the WPCOM product slug used to make the purchase
 	 *
 	 * @return ?string
@@ -157,4 +166,12 @@ class Videopress extends Hybrid_Product {
 		}
 	}
 
+	/**
+	 * Checks whether the current plan (or purchases) of the site already supports the product
+	 *
+	 * @return boolean
+	 */
+	public static function has_required_plan() {
+		return static::does_site_have_feature( 'videopress' );
+	}
 }

@@ -1,0 +1,95 @@
+
+a:visited {
+    color: inherit;
+}
+
+.main-navigation {   
+    @include media-breakpoint-down(xs){
+        position: absolute;
+        bottom: 0.5rem;
+        z-index: 2;
+    }
+    ul>li {
+        display: inline-block;
+        &.current-menu-item a, a:hover {
+            border-bottom:solid 1px $primary;
+            color: $primary;
+        }
+    }
+    ul>li>a {
+        padding: 0 10px;
+        font-size: 14px;
+        // font-weight: 700;
+        line-height: 45px;
+        height: 45px;
+        // color: $white;
+
+        &:hover {
+            color: $default;
+        }
+    }
+
+    &.toggled {
+        .hamburger-inner {
+            text-indent: -999px;
+        }
+        .menu-mobile-menu-container{
+            opacity:1;
+            visibility: visible;
+            transform: translateX(0%);
+        }
+    }
+    .menu-mobile-menu-container {
+            
+        // @include media-breakpoint-down(xs) {
+            background-color: $bg-default;
+            position: fixed;
+            top:0;
+            min-width: 300px;
+            bottom:0;
+            left:0;
+            z-index: 10;
+            opacity:0;
+            visibility: hidden;
+            transform: translateX(-100%);
+            box-shadow: 1px 4px 5px rgba(0,0,0,0.1);
+            text-align: left;
+            transition: 0.4s all ease;
+            z-index: 100;
+            ul {
+                padding: 15px;
+                padding-top: 50px;
+            }
+            li {
+                display: block;
+            }
+        // }
+    } // menu-main-menu-container
+} // main navigation end here
+
+
+@keyframes fadein{
+    0% { opacity:0; }
+    66% { opacity:0; }
+    100% { opacity:1; }
+}
+
+@-webkit-keyframes fadein{
+    0% { opacity:0; }
+    66% { opacity:0; }
+    100% { opacity:1; }
+}
+
+.mobile-menu-close {
+    position: fixed;
+    top: 6px;
+    left: 18px;
+    margin-left: 6px;
+    z-index: 1000;
+    opacity: 0;
+    .toggled &{
+        animation: 1s ease 0s normal forwards 1 fadein;
+        opacity: 1;
+    }
+}
+

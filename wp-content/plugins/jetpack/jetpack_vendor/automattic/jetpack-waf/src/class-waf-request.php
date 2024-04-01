@@ -202,7 +202,7 @@ class Waf_Request {
 			$this->url = array( $uri_host, $uri_path, $query_string );
 		} else {
 			// otherwise build the URI manually
-			$uri_scheme = ( ! empty( $_SERVER['HTTPS'] ) && 'on' === $_SERVER['HTTPS'] )
+			$uri_scheme = ( ! empty( $_SERVER['HTTPS'] ) && 'off' !== $_SERVER['HTTPS'] )
 				? 'https'
 				: 'http';
 			$uri_host   = isset( $_SERVER['HTTP_HOST'] )
@@ -251,6 +251,24 @@ class Waf_Request {
 	 */
 	public function get_filename() {
 		return $this->get_url()[1];
+	}
+
+	/**
+	 * Return the basename part of the request
+	 *
+	 * @example for 'https://wordpress.com/some/page.php?id=5', return 'page.php'
+	 * @return string
+	 */
+	public function get_basename() {
+		// Get the filename part of the request
+		$filename = $this->get_filename();
+		// Normalize slashes
+		$filename = str_replace( '\\', '/', $filename );
+		// Remove trailing slashes
+		$filename = rtrim( $filename, '/' );
+		// Return the basename
+		$offset = strrpos( $filename, '/' );
+		return $offset !== false ? substr( $filename, $offset + 1 ) : $filename;
 	}
 
 	/**

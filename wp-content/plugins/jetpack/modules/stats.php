@@ -14,6 +14,7 @@
  * @package automattic/jetpack
  */
 
+use Automattic\Jetpack\Admin_UI\Admin_Menu;
 use Automattic\Jetpack\Connection\Client;
 use Automattic\Jetpack\Connection\Manager as Connection_Manager;
 use Automattic\Jetpack\Connection\XMLRPC_Async_Call;
@@ -21,6 +22,7 @@ use Automattic\Jetpack\Redirect;
 use Automattic\Jetpack\Stats\Main as Stats;
 use Automattic\Jetpack\Stats\Options as Stats_Options;
 use Automattic\Jetpack\Stats\Tracking_Pixel as Stats_Tracking_Pixel;
+use Automattic\Jetpack\Stats\WPCOM_Stats;
 use Automattic\Jetpack\Stats\XMLRPC_Provider as Stats_XMLRPC;
 use Automattic\Jetpack\Stats_Admin\Dashboard as Stats_Dashboard;
 use Automattic\Jetpack\Stats_Admin\Main as Stats_Main;
@@ -240,17 +242,16 @@ function stats_admin_menu() {
 	}
 
 	// phpcs:ignore WordPress.Security.NonceVerification.Recommended
-	if ( ( new Host() )->is_woa_site() || ! Stats_Options::get_option( 'enable_odyssey_stats' ) || isset( $_GET['noheader'] ) ) {
+	if ( ! Stats_Options::get_option( 'enable_odyssey_stats' ) || isset( $_GET['noheader'] ) ) {
 		// Show old Jetpack Stats interface for:
-		// - Atomic sites.
 		// - When the "enable_odyssey_stats" option is disabled.
 		// - When being shown in the adminbar outside of wp-admin.
-		$hook = add_submenu_page( 'jetpack', __( 'Stats', 'jetpack' ), __( 'Stats', 'jetpack' ), 'view_stats', 'stats', 'jetpack_admin_ui_stats_report_page_wrapper' );
+		$hook = Admin_Menu::add_menu( __( 'Stats', 'jetpack' ), __( 'Stats', 'jetpack' ), 'view_stats', 'stats', 'jetpack_admin_ui_stats_report_page_wrapper' );
 		add_action( "load-$hook", 'stats_reports_load' );
 	} else {
 		// Enable the new Odyssey Stats experience.
 		$stats_dashboard = new Stats_Dashboard();
-		$hook            = add_submenu_page( 'jetpack', __( 'Stats', 'jetpack' ), __( 'Stats', 'jetpack' ), 'view_stats', 'stats', array( $stats_dashboard, 'render' ) );
+		$hook            = Admin_Menu::add_menu( __( 'Stats', 'jetpack' ), __( 'Stats', 'jetpack' ), 'view_stats', 'stats', array( $stats_dashboard, 'render' ) );
 		add_action( "load-$hook", array( $stats_dashboard, 'admin_init' ) );
 	}
 }
@@ -522,7 +523,7 @@ function stats_reports_page( $main_chart_only = false ) {
 		} elseif ( null === $vals ) {
 			$q[ $var ] = '';
 		} elseif ( 'data' === $vals ) {
-			if ( 'index.php' === substr( $val, 0, 9 ) ) {
+			if ( str_starts_with( $val, 'index.php' ) ) {
 				$q[ $var ] = $val;
 			}
 		}
@@ -549,7 +550,7 @@ function stats_reports_page( $main_chart_only = false ) {
 	} else {
 		if ( ! empty( $get['headers']['content-type'] ) ) {
 			$type = $get['headers']['content-type'];
-			if ( substr( $type, 0, 5 ) === 'image' ) {
+			if ( str_starts_with( $type, 'image' ) ) {
 				$img = $get['body'];
 				header( 'Content-Type: ' . $type );
 				header( 'Content-Length: ' . strlen( $img ) );
@@ -1738,13 +1739,7 @@ function filter_stats_array_add_jp_version( $kvs ) {
  * @return WP_Error|Object|null
  */
 function convert_stats_array_to_object( $stats_array ) {
+	_deprecated_function( __FUNCTION__, 'jetpack-13.2', 'Automattic\Jetpack\Stats\WPCOM_Stats->convert_stats_array_to_object' );
 
-	if ( is_wp_error( $stats_array ) ) {
-		return $stats_array;
-	}
-	$encoded_array = wp_json_encode( $stats_array );
-	if ( ! $encoded_array ) {
-		return new WP_Error( 'stats_encoding_error', 'Failed to encode stats array' );
-	}
-	return json_decode( $encoded_array );
+	return ( new WPCOM_Stats() )->convert_stats_array_to_object( $stats_array );
 }

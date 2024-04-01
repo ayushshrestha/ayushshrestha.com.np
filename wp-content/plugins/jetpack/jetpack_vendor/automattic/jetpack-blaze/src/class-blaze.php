@@ -14,6 +14,7 @@ use Automattic\Jetpack\Connection\Client;
 use Automattic\Jetpack\Connection\Initial_State as Connection_Initial_State;
 use Automattic\Jetpack\Connection\Manager as Jetpack_Connection;
 use Automattic\Jetpack\Status as Jetpack_Status;
+use Automattic\Jetpack\Status\Host;
 use Automattic\Jetpack\Sync\Settings as Sync_Settings;
 
 /**
@@ -67,18 +68,37 @@ class Blaze {
 
 	/**
 	 * Is the wp-admin Dashboard enabled?
+	 * That dashboard is not available or necessary on WordPress.com sites when the nav redesign is disabled.
 	 *
 	 * @return bool
 	 */
 	public static function is_dashboard_enabled() {
+		$is_dashboard_enabled          = true;
+		$wpcom_is_nav_redesign_enabled = function_exists( 'wpcom_is_nav_redesign_enabled' ) && wpcom_is_nav_redesign_enabled();
+
+		// On WordPress.com sites, the dashboard is not needed if the nav redesign is not enabled.
+		if ( ! $wpcom_is_nav_redesign_enabled && ( new Host() )->is_wpcom_platform() ) {
+			$is_dashboard_enabled = false;
+		}
+
 		/**
 		 * Enable a wp-admin dashboard for Blaze campaign management.
 		 *
 		 * @since 0.7.0
 		 *
-		 * @param bool $should_enable Should the dashboard be enabled? False by default for now.
+		 * @param bool $should_enable Should the dashboard be enabled?
 		 */
-		return apply_filters( 'jetpack_blaze_dashboard_enable', false );
+		return apply_filters( 'jetpack_blaze_dashboard_enable', $is_dashboard_enabled );
+	}
+
+	/**
+	 * Is the Woo Blaze plugin active?
+	 * The dashboard provided by that plugin takes precedence over Jetpack Blaze
+	 *
+	 * @return bool
+	 */
+	public static function is_woo_blaze_active() {
+		return is_plugin_active( 'woocommerce/woocommerce.php' ) && is_plugin_active( 'woo-blaze/woo-blaze.php' );
 	}
 
 	/**
@@ -87,19 +107,33 @@ class Blaze {
 	 * @return void
 	 */
 	public static function enable_blaze_menu() {
-		if (
-			self::should_initialize()
-			&& self::is_dashboard_enabled()
-		) {
-			$blaze_dashboard = new Blaze_Dashboard();
-			$page_suffix     = add_submenu_page(
+		if ( ! self::should_initialize() || self::is_woo_blaze_active() ) {
+			return;
+		}
+
+		$blaze_dashboard = new Blaze_Dashboard();
+
+		if ( self::is_dashboard_enabled() ) {
+			$page_suffix = add_submenu_page(
 				'tools.php',
 				esc_attr__( 'Advertising', 'jetpack-blaze' ),
 				__( 'Advertising', 'jetpack-blaze' ),
 				'manage_options',
 				'advertising',
 				array( $blaze_dashboard, 'render' ),
-				100
+				1
+			);
+			add_action( 'load-' . $page_suffix, array( $blaze_dashboard, 'admin_init' ) );
+		} elseif ( ( new Host() )->is_wpcom_platform() ) {
+			$domain      = ( new Jetpack_Status() )->get_site_suffix();
+			$page_suffix = add_submenu_page(
+				'tools.php',
+				esc_attr__( 'Advertising', 'jetpack-blaze' ),
+				__( 'Advertising', 'jetpack-blaze' ),
+				'manage_options',
+				'https://wordpress.com/advertising/' . $domain,
+				null,
+				1
 			);
 			add_action( 'load-' . $page_suffix, array( $blaze_dashboard, 'admin_init' ) );
 		}
@@ -216,19 +250,26 @@ class Blaze {
 	 * - Calypso Links
 	 * - wp-admin Links if access to the wp-admin Blaze Dashboard is enabled.
 	 *
-	 * @param int $post_id Post ID.
+	 * @param int|string $post_id Post ID.
 	 *
 	 * @return array An array with the link, and whether this is a Calypso or a wp-admin link.
 	 */
 	public static function get_campaign_management_url( $post_id ) {
-		if ( self::is_dashboard_enabled() ) {
-			$admin_url = admin_url( 'tools.php?page=advertising' );
+		$is_woo_blaze_active = self::is_woo_blaze_active();
+
+		if ( self::is_dashboard_enabled() || $is_woo_blaze_active ) {
+			// Woo Blaze uses a different admin section and path prefix
+			$admin_section     = $is_woo_blaze_active ? 'admin.php' : 'tools.php';
+			$blaze_path_prefix = $is_woo_blaze_active ? 'wc-blaze' : 'advertising';
+
+			$admin_url = admin_url( sprintf( '%1$s?page=%2$s', $admin_section, $blaze_path_prefix ) );
 			$hostname  = wp_parse_url( get_site_url(), PHP_URL_HOST );
 			$blaze_url = sprintf(
-				'%1$s#!/advertising/%2$s/posts/promote/post-%3$s',
+				'%1$s#!/%2$s/posts/promote/post-%3$s/%4$s',
 				$admin_url,
-				$hostname,
-				esc_attr( $post_id )
+				$blaze_path_prefix,
+				esc_attr( $post_id ),
+				$hostname
 			);
 
 			return array(
@@ -259,10 +300,21 @@ class Blaze {
 	 * @return array
 	 */
 	public static function jetpack_blaze_row_action( $post_actions, $post ) {
-		$post_id = $post->ID;
+		/**
+		 * Allow third-party plugins to disable Blaze row actions.
+		 *
+		 * @since 0.16.0
+		 *
+		 * @param bool    $are_quick_links_enabled Should Blaze row actions be enabled.
+		 * @param WP_Post $post                    The current post in the post list table.
+		 */
+		$are_quick_links_enabled = apply_filters( 'jetpack_blaze_post_row_actions_enable', true, $post );
 
 		// Bail if we are not looking at one of the supported post types (post, page, or product).
-		if ( ! in_array( $post->post_type, array( 'post', 'page', 'product' ), true ) ) {
+		if (
+			! $are_quick_links_enabled
+			|| ! in_array( $post->post_type, array( 'post', 'page', 'product' ), true )
+		) {
 			return $post_actions;
 		}
 
@@ -276,8 +328,8 @@ class Blaze {
 			return $post_actions;
 		}
 
-		$blaze_url = self::get_campaign_management_url( $post_id );
-		$text      = _x( 'Blaze', 'Verb', 'jetpack-blaze' );
+		$blaze_url = self::get_campaign_management_url( $post->ID );
+		$text      = __( 'Promote with Blaze', 'jetpack-blaze' );
 		$title     = get_the_title( $post );
 		$label     = sprintf(
 			/* translators: post title */
@@ -334,16 +386,14 @@ class Blaze {
 		);
 
 		// Adds Connection package initial state.
-		wp_add_inline_script( self::SCRIPT_HANDLE, Connection_Initial_State::render(), 'before' );
+		Connection_Initial_State::render_script( self::SCRIPT_HANDLE );
 
 		// Pass additional data to our script.
 		wp_localize_script(
 			self::SCRIPT_HANDLE,
 			'blazeInitialState',
 			array(
-				'adminUrl'           => esc_url( admin_url() ),
-				'isDashboardEnabled' => self::is_dashboard_enabled(),
-				'siteFragment'       => ( new Jetpack_Status() )->get_site_suffix(),
+				'blazeUrlTemplate' => self::get_campaign_management_url( '__POST_ID__' ),
 			)
 		);
 	}

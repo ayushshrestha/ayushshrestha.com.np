@@ -18,9 +18,7 @@ use Automattic\Jetpack\Status\Visitor;
 use Automattic\Jetpack\Waf\Brute_Force_Protection\Brute_Force_Protection_Shared_Functions;
 use Automattic\Jetpack\Waf\Waf_Compatibility;
 
-/**
- * Disable direct access.
- */
+// Disable direct access.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
@@ -767,6 +765,27 @@ class Jetpack_Core_Json_Api_Endpoints {
 				'permission_callback' => __CLASS__ . '::view_admin_page_permission_check',
 			)
 		);
+
+		// Save subscriber token and redirect
+		register_rest_route(
+			'jetpack/v4',
+			'/subscribers/auth',
+			array(
+				'methods'             => WP_REST_Server::READABLE,
+				'callback'            => __CLASS__ . '::set_subscriber_cookie_and_redirect',
+				'permission_callback' => '__return_true',
+				'args'                => array(
+					'redirect_url' => array(
+						'required'          => true,
+						'description'       => __( 'The URL to redirect to.', 'jetpack' ),
+						'validate_callback' => 'wp_http_validate_url',
+						'sanitize_callback' => 'sanitize_url',
+						'type'              => 'string',
+						'format'            => 'uri',
+					),
+				),
+			)
+		);
 	}
 
 	/**
@@ -801,6 +820,25 @@ class Jetpack_Core_Json_Api_Endpoints {
 			'token'   => $json->token,
 			'blog_id' => $blog_id,
 		);
+	}
+
+	/**
+	 * Set subscriber cookie and redirect
+	 *
+	 * @param \WP_Rest_Request $request The URL to redirect to.
+	 *
+	 * @return WP_Error|WP_REST_Response
+	 */
+	public static function set_subscriber_cookie_and_redirect( $request ) {
+		require_once JETPACK__PLUGIN_DIR . 'extensions/blocks/premium-content/_inc/subscription-service/include.php';
+		$subscription_service = \Automattic\Jetpack\Extensions\Premium_Content\subscription_service();
+		$token                = $subscription_service->get_and_set_token_from_request();
+		$payload              = $subscription_service->decode_token( $token );
+		$is_valid_token       = ! empty( $payload );
+		if ( $is_valid_token ) {
+			return new WP_REST_Response( null, 302, array( 'location' => $request['redirect_url'] ) );
+		}
+		return new WP_Error( 'invalid-token', 'Invalid Token' );
 	}
 
 	/**
@@ -2496,7 +2534,7 @@ class Jetpack_Core_Json_Api_Endpoints {
 				'description'       => esc_html__( 'Enabled Services and those hidden behind a button', 'jetpack' ),
 				'type'              => 'object',
 				'default'           => array(
-					'visible' => array( 'twitter', 'facebook' ),
+					'visible' => array( 'facebook', 'x' ),
 					'hidden'  => array(),
 				),
 				'validate_callback' => __CLASS__ . '::validate_services',
@@ -2565,7 +2603,7 @@ class Jetpack_Core_Json_Api_Endpoints {
 				'validate_callback' => __CLASS__ . '::validate_custom_service',
 				'jp_group'          => 'sharedaddy',
 			),
-			// Not an option, but an action that can be perfomed on the list of custom services passing the service ID.
+			// Not an option, but an action that can be performed on the list of custom services passing the service ID.
 			'sharing_delete_service'               => array(
 				'description'       => esc_html__( 'Delete custom sharing service.', 'jetpack' ),
 				'type'              => 'string',
@@ -2585,7 +2623,7 @@ class Jetpack_Core_Json_Api_Endpoints {
 			'jetpack_sso_match_by_email'           => array(
 				'description'       => esc_html__( 'Match by Email', 'jetpack' ),
 				'type'              => 'boolean',
-				'default'           => 0,
+				'default'           => 1,
 				'validate_callback' => __CLASS__ . '::validate_boolean',
 				'jp_group'          => 'sso',
 			),
@@ -2605,11 +2643,50 @@ class Jetpack_Core_Json_Api_Endpoints {
 				'validate_callback' => __CLASS__ . '::validate_boolean',
 				'jp_group'          => 'subscriptions',
 			),
-			'social_notifications_subscribe'       => array(
-				'description'       => esc_html__( 'Send email notification when someone follows my blog', 'jetpack' ),
+			'wpcom_newsletter_categories'          => array(
+				'description'       => esc_html__( 'Array of post category ids that are marked as newsletter categories', 'jetpack' ),
+				'type'              => 'array',
+				'default'           => array(),
+				'validate_callback' => __CLASS__ . '::validate_array',
+				'jp_group'          => 'subscriptions',
+			),
+			'wpcom_newsletter_categories_enabled'  => array(
+				'description'       => esc_html__( 'Whether the newsletter categories are enabled or not', 'jetpack' ),
 				'type'              => 'boolean',
 				'default'           => 0,
 				'validate_callback' => __CLASS__ . '::validate_boolean',
+				'jp_group'          => 'subscriptions',
+			),
+			'sm_enabled'                           => array(
+				'description'       => esc_html__( 'Show popup Subscribe modal to readers.', 'jetpack' ),
+				'type'              => 'boolean',
+				'default'           => 0,
+				'validate_callback' => __CLASS__ . '::validate_boolean',
+				'jp_group'          => 'subscriptions',
+			),
+			'jetpack_subscriptions_subscribe_post_end_enabled' => array(
+				'description'       => esc_html__( 'Add Subscribe block at the end of each post.', 'jetpack' ),
+				'type'              => 'boolean',
+				'default'           => 0,
+				'validate_callback' => __CLASS__ . '::validate_boolean',
+				'jp_group'          => 'subscriptions',
+			),
+			'social_notifications_subscribe'       => array(
+				'description'       => esc_html__( 'Send email notification when someone subscribes to my blog', 'jetpack' ),
+				'type'              => 'boolean',
+				'default'           => 0,
+				'validate_callback' => __CLASS__ . '::validate_boolean',
+				'jp_group'          => 'subscriptions',
+			),
+			'subscription_options'                 => array(
+				'description'       => esc_html__( 'Three options used in subscription email templates: \'invitation\', \'welcome\' and \'comment_follow\'.', 'jetpack' ),
+				'type'              => 'object',
+				'default'           => array(
+					'invitation'     => '',
+					'welcome'        => '',
+					'comment_follow' => '',
+				),
+				'validate_callback' => __CLASS__ . '::validate_subscription_options',
 				'jp_group'          => 'subscriptions',
 			),
 
@@ -2769,6 +2846,13 @@ class Jetpack_Core_Json_Api_Endpoints {
 				'default'           => '',
 				'validate_callback' => __CLASS__ . '::validate_string',
 				'sanitize_callback' => 'sanitize_text_field',
+				'jp_group'          => 'wordads',
+			),
+			'wordads_cmp_enabled'                  => array(
+				'description'       => esc_html__( 'Enable GDPR Consent Management Banner for WordAds', 'jetpack' ),
+				'type'              => 'boolean',
+				'default'           => 0,
+				'validate_callback' => __CLASS__ . '::validate_boolean',
 				'jp_group'          => 'wordads',
 			),
 
@@ -3521,6 +3605,59 @@ class Jetpack_Core_Json_Api_Endpoints {
 	}
 
 	/**
+	 * Validates the subscription_options parameter.
+	 *
+	 * @param array $values Value to check.
+	 *
+	 * @return bool|WP_Error
+	 */
+	public static function validate_subscription_options( $values ) {
+		if ( is_object( $values ) ) {
+			return new WP_Error(
+				'invalid_param',
+				/* Translators: subscription_options is a variable name, and shouldn't be translated. */
+				esc_html__( 'subscription_options must be an object.', 'jetpack' )
+			);
+		}
+		foreach ( array_keys( $values ) as $key ) {
+			if ( ! in_array( $key, array( 'welcome', 'invitation', 'comment_follow' ), true ) ) {
+				return new WP_Error(
+					'invalid_param',
+					sprintf(
+						/* Translators: Placeholder is the invalid param being sent. */
+						esc_html__( '%s is not one of the allowed members of subscription_options.', 'jetpack' ),
+						$key
+					)
+				);
+			}
+		}
+		return true;
+	}
+
+	/**
+	 * Validates that the parameter is an array.
+	 *
+	 * @param array           $values Value to check.
+	 * @param WP_REST_Request $request The request sent to the WP REST API.
+	 * @param string          $param Name of the parameter passed to the endpoint holding $value.
+	 *
+	 * @return bool|WP_Error
+	 */
+	public static function validate_array( $values, $request, $param ) {
+		if ( ! is_array( $values ) ) {
+			return new WP_Error(
+				'invalid_param',
+				sprintf(
+					/* Translators: Placeholder is a parameter name. */
+					esc_html__( '%s must be an object.', 'jetpack' ),
+					$param
+				)
+			);
+		}
+		return true;
+	}
+
+	/**
 	 * If for some reason the roles allowed to see Stats are empty (for example, user tampering with checkboxes),
 	 * return an array with only 'administrator' as the allowed role and save it for 'roles' option.
 	 *
@@ -4257,5 +4394,4 @@ class Jetpack_Core_Json_Api_Endpoints {
 			)
 		);
 	}
-
 } // class end

@@ -18,6 +18,12 @@ use Jetpack_Network;
  * Authorize_Redirect Webhook handler class.
  */
 class Authorize_Redirect {
+	/**
+	 * The Connection Manager object.
+	 *
+	 * @var Manager
+	 */
+	private $connection;
 
 	/**
 	 * Constructs the object
@@ -107,9 +113,7 @@ class Authorize_Redirect {
 		remove_filter( 'jetpack_connect_request_body', array( __CLASS__, 'filter_connect_request_body' ) );
 		remove_filter( 'jetpack_connect_redirect_url', array( __CLASS__, 'filter_connect_redirect_url' ) );
 
-		/**
-		 * This filter is documented in plugins/jetpack/class-jetpack.php
-		 */
+		/** This filter is documented in plugins/jetpack/class-jetpack.php */
 		return apply_filters( 'jetpack_build_authorize_url', $url );
 	}
 

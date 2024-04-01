@@ -1,0 +1,51 @@
+.close {
+    background: none;
+    border: 0;
+    box-sizing: border-box;
+    color: transparent;
+    cursor: pointer;
+    font-size: 14px;
+    right: 50px;
+    letter-spacing: 1.5px;
+    line-height: 33px;
+    outline: none;
+    overflow: hidden;
+    padding: 10px 0 0;
+    position: absolute;
+    text-transform: uppercase;
+    top: 50px;
+    transform: translate(-50%, -50%);
+    transition: all 0.2s ease-in;
+    width: 50px;
+    height: 50px;
+    &::before,
+    &::after {
+      background-color: $default;
+      content: '';
+      display: block;
+      height: 1px;
+      left: 0;
+      position: absolute;
+      transform-origin: center left;
+      transition: all 0.2s ease-in;
+      width: 141.4214px;
+      z-index: -1;
+    }
+    &::before {
+        top: 0;
+        transform: rotate(45deg);
+    }
+    &::after {
+        bottom: 0;
+        transform: rotate(-45deg);
+    }
+    &:hover {
+        color: $white;
+    }
+    &:hover::before,
+    &:hover::after {
+        height: 50px;
+        transform: rotate(0deg);
+    }
+  }
+  

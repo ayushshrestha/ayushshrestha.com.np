@@ -2,8 +2,8 @@
 module.exports = {
   content: [
     './*.{html,js,php}', 
-    './wp-content/themes/shresthabros/*/*.php',
-    './wp-content/themes/shresthabros/*.php',
+    './wp-content/themes/ayushshrestha/*/*.php',
+    './wp-content/themes/ayushshrestha/*.php',
   ],
   theme: {
     fontFamily: {
@@ -18,6 +18,8 @@ module.exports = {
       '3xl': '2rem',
       '4xl': '2.441rem',
       '5xl': '3.052rem',
+      '6xl': '5rem',
+      '8xl': '6rem',
       '20xl': '10rem',
     },
     fontWeight: {
@@ -34,7 +36,7 @@ module.exports = {
     },
     colors: {
       white: '#ffffff',
-      default: '#000000',
+      default: '#ef4444',
       primary: '#334155',
       secondary: '#facc15',
       black:    '#000000',
@@ -77,7 +79,7 @@ module.exports = {
     },
     backgroundColor: theme => ({
       ...theme('colors'),
-      'default': '#000000',
+      'default': '#ef4444',
       'primary': '#334155',
       'secondary': '#22c55e',
       'white': '#ffffff',

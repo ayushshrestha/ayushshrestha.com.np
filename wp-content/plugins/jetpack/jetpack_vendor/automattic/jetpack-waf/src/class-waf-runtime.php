@@ -222,7 +222,7 @@ class Waf_Runtime {
 				$v['value'] = $this->transforms->$t( $v['value'] );
 			}
 		}
-
+		unset( $v );
 		// pass each target value to the operator to find any that match.
 		$matched  = array();
 		$captures = array();
@@ -495,7 +495,7 @@ class Waf_Runtime {
 					);
 					break;
 				case 'request_basename':
-					$value = basename( $this->request->get_filename() );
+					$value = $this->request->get_basename();
 					break;
 				case 'request_body':
 					$value = $this->request->get_body();
