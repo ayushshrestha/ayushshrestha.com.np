@@ -15,7 +15,7 @@
 get_header();
 ?>
 
-	<main id="primary" class="site-main mx-5 md:mx-14 md:mt-20 md:mb-14">
+	<main id="primary" class="site-main mx-5X md:mx-14X md:px-14 md:pt-20 md:mt-20X md:mb-14x relative z-20 mb-[100vh] bg-slate-100">
 
 	
 		<?php

@@ -3,6 +3,59 @@
 @tailwind utilities;
 
 
+@layer base {
+
+    h1, h2, h3, h4, h5 {
+        @apply font-bold mb-2;
+
+    }
+    h1 {
+        @apply text-5xl;
+    }
+    h2 {
+        @apply text-4xl
+    }
+    h3 {
+        @apply text-3xl;
+    }
+    h4 {
+        @apply text-2xl;
+    }
+    h5 {
+        
+    }
+
+}
+
+@layer components {
+    a {
+      @apply text-primary hover:text-default visited:text-primary/10;
+    }
+}
+
+
+.card {
+    &-md {
+        @apply p-5;
+    }
+    
+  
+    &--primary {
+      @apply bg-primary text-white;
+    }
+  
+    &--white {
+      @apply bg-white text-gray-800;
+    }
+}
+
+
+.badge {
+    @apply px-2 py-1 rounded-md text-white visited:text-white text-sm;
+}
+
+
+
 .bg-primary--before:before {
     background-color: theme('colors.primary');
     width: 100%;

@@ -138,6 +138,30 @@ function ayushshrestha_content_width() {
 add_action( 'after_setup_theme', 'ayushshrestha_content_width', 0 );
 
 
+function snip_category_rel($result) {
+    $result = str_replace('rel="category"', 'class="inline-flex items-center rounded-md bg-default-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-gray-700/30 uppercase hover:text-default visited:text-default"', $result);
+    return $result;
+}
+add_filter('wp_list_categories', 'snip_category_rel');
+add_filter('the_category', 'snip_category_rel');
+
+function snip_tag_rel($result) {
+    $result = str_replace('rel="tag"', 'class="inline-flex items-center rounded-md bg-default-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-gray-700/30 uppercase hover:text-default visited:text-default"', $result);
+    return $result;
+}
+add_filter('get_the_tag_list', 'snip_tag_rel');
+add_filter('the_tags', 'snip_tag_rel');
+
+
+
+
+function snip_categorytag_rel($result2) {
+    $result2 = str_replace('rel="category tag"', 'class="inline-flex items-center rounded-md bg-default-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-gray-700/30 uppercase hover:text-default visited:text-default"', $result2);
+    return $result2;
+}
+add_filter('wp_list_categories', 'snip_categorytag_rel');
+add_filter('the_category', 'snip_categorytag_rel');
+
 
 
 /**
@@ -201,7 +225,7 @@ function ayushshrestha_scripts() {
 	wp_enqueue_script( 'ayushshrestha-migrate', '//code.jquery.com/jquery-migrate-1.2.1.min.js', array(), _S_VERSION, true );
 	wp_enqueue_script( 'ayushshrestha-aos', '//unpkg.com/aos@2.3.1/dist/aos.js', array(), _S_VERSION, true );
 	//wp_enqueue_script( 'ayushshrestha-scroll', get_template_directory_uri() . '/assets/js/scroll-main.js', array(), _S_VERSION, true );
-	wp_enqueue_script( 'ayushshrestha-slick', get_template_directory_uri() . '/assets/js/slick.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'ayushshrestha-slick', get_template_directory_uri() . '/assets/js/slick.min.js', array(), _S_VERSION, true );
 	wp_enqueue_script( 'ayushshrestha-sharect', '//unpkg.com/sharect@2.0.0/dist/sharect.js', array(), _S_VERSION, true );
 	
 	wp_enqueue_script( 'ayushshrestha-main', get_template_directory_uri() . '/assets/js/main.js', array(), _S_VERSION, true );

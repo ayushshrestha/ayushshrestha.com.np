@@ -11,7 +11,7 @@
 
 ?>
 
-	<footer id="colophon" class="site-footer p-6 md:p-10 lg:px-14">
+	<footer id="colophon" class="site-footer p-6 md:p-10 lg:px-14 fixed h-[100vh] bottom-0 w-full overflow-hidden bg-white z-0">
 		<h5 class="text-sm text-whiteX">05</h5>
 		<h2 class="text-xl tracking-tight font-light text-whiteX mb-5">Contact</h2>
 		<div class="grid md:grid-cols-6 align-items-center justify-between mb-7 block">

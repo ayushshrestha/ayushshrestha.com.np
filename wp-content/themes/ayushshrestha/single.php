@@ -10,7 +10,7 @@
 get_header();
 ?>
 
-	<main id="primary" class="site-main single-dot-php mt-3 mb-5">
+	<main id="primary" class="site-main single-dot-php py-20 relative z-20 mb-[100vh] bg-slate-100">
 		<div class="mx-5 md:mx-14">					
 				<?php
 					while ( have_posts() ) :
@@ -32,7 +32,7 @@ get_header();
 										) );
 									if( $related ) foreach( $related as $post ) {
 									setup_postdata($post); ?>
-									<li>
+									<li style="text-wrap:wrap;">
 										<?php /*<div class="image image-3-2 hidden">
 											<figure>
 												<a href="<?php the_permalink() ?>">
