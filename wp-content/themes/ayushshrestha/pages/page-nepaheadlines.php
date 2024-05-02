@@ -209,7 +209,7 @@ function get_youtube_videos($api_key, $channel_id, $max_results = 20) {
 }
 
 // Example usage: Retrieve videos from a YouTube channel
-$api_key = 'AIzaSyAltgMnylX7Tfnx_AE92icEZIu1tSyXU74';
+$api_key = '';
 $channel_id = 'UCuO42H2gND8Hkwxp3Y92LYQ';
 $videos = get_youtube_videos($api_key, $channel_id);
 
