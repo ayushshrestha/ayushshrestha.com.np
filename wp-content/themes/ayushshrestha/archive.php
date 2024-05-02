@@ -10,7 +10,7 @@
 get_header();
 ?>
 
-	<main id="primary" class="site-main single-dot-php py-20 relative z-20 mb-[100vh] bg-slate-100">
+	<main id="primary" class="site-main single-dot-php py-20 relative z-20 mb-[100vh] bg-slate-100 dark:bg-black">
 	<div class="mx-5 md:mx-14">
 		<?php if ( have_posts() ) : ?>
 

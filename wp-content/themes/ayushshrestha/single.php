@@ -10,7 +10,7 @@
 get_header();
 ?>
 
-	<main id="primary" class="site-main single-dot-php py-20 relative z-20 mb-[100vh] bg-slate-100">
+	<main id="primary" class="site-main single-dot-php py-20 relative z-20 mb-[100vh] bg-slate-100 dark:bg-black">
 		<div class="mx-5 md:mx-14">					
 				<?php
 					while ( have_posts() ) :
@@ -46,12 +46,12 @@ get_header();
 												</a>
 											</figure>
 										</div> */ ?>
-										<div class="bg-white p-5 rounded-xl" style="text-wrap:wrap;">
-											<h5 class="font-bold mb-3 <?php if(empty(get_the_content())){ ?> mb-2<?php } ?>"><a class="text-primary/90" href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title(); ?>"><?php the_title(); ?></a></h5>
+										<div class="bg-white dark:bg-gray-800 p-5 rounded-xl" style="text-wrap:wrap;">
+											<h5 class="font-bold mb-3 <?php if(empty(get_the_content())){ ?> mb-2<?php } ?>"><a class="text-primary/90 dark:text-white/60" href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title(); ?>"><?php the_title(); ?></a></h5>
 											<?php if(empty(get_the_content())){ ?>
-												<a href="<?php the_permalink() ?>" class="rounded-3xl text-sm font-semibold py-1 px-4 text-gray-900 visited:text-gray-900 hover:text-gray-300 hover:bg-gray-700x border border-gray-900 hover:border-gray-300 transition duration-300 effect-cloudliquid">View More</a>	
+												<a href="<?php the_permalink() ?>" class="rounded-3xl text-sm font-semibold py-1 px-4 text-gray-900 visited:text-gray-900 hover:text-gray-300 hover:bg-gray-700x border border-gray-900 hover:border-gray-300 transition duration-300 effect-cloudliquid dark:border-gray-600 dark:text-white/60">View More</a>	
 											<?php } ?>
-											<p class="mb-5 text-primary/80 text-wrap" style="text-wrap:wrap;"><?php echo wp_trim_words( get_the_content(), 25, '...' );?></p>
+											<p class="mb-5 text-wrap" style="text-wrap:wrap;"><?php echo wp_trim_words( get_the_content(), 25, '...' );?></p>
 											<?php if(!empty(get_the_content())){ ?>
 												<a href="<?php the_permalink() ?>" class="rounded-3xl text-sm font-semibold py-1 px-4 text-gray-900 visited:text-gray-900 hover:text-gray-300 hover:bg-gray-700x border border-gray-900 hover:border-gray-300 transition duration-300 effect-cloudliquid">Read More</a>	
 											<?php } ?>

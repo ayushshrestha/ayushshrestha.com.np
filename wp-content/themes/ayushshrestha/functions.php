@@ -46,6 +46,38 @@ function ayushshrestha_setup() {
 		*/
 	add_theme_support( 'post-thumbnails' );
 
+	add_filter( 'post_thumbnail_html', 'remove_thumbnail_dimensions', 10, 3 );
+
+	function remove_thumbnail_dimensions( $html, $post_id, $post_image_id ) {
+		$html = preg_replace( '/(width|height)=\"\d*\"\s/', "", $html );
+		return $html;
+	}
+
+	// function add_lazyload($content){
+	// 	$content = preg_replace('#<img([^>]+?)src=#', '<img$1srset=', $content);
+	// 	return str_replace('<img', '<img loading="lazy"', $content);
+	// }
+
+	// add_filter('post_thumbnail', 'add_lazyload');
+
+	// Add a filter to the_content() function
+
+	function add_skeleton_classes($content) {
+		// Add skeleton class to images
+		$content = preg_replace('/<img(.*?)class=["\'](.*?)["\'](.*?)>/i', '<img$1class="$2 wp-skeleton"$3>', $content);
+		
+		// Add skeleton class to content containers
+		$content = preg_replace('/<div(.*?)class=["\'](.*?)["\'](.*?)>(.*?)<\/div>/i', '<div$1class="$2 wp-skeleton"$3>$4</div>', $content);
+		
+		// Add skeleton class to other content elements (e.g., paragraphs, headings)
+		$content = preg_replace('/<(p|h[1-6]|span|div|article)(.*?)>(.*?)<\/(p|h[1-6]|span|div|article)>/i', '<$1$2 class="$3 wp-skeleton"></$1>', $content);
+	
+		return $content;
+	}
+	add_filter('post-thumbnails', 'add_skeleton_classes');
+	
+
+
 	function limit_word_count($title) {
 		$len = 20; //change this to the number of words
 		if (str_word_count($title) > $len) {
@@ -55,6 +87,8 @@ function ayushshrestha_setup() {
 		return $title;
 	}
 	add_filter('the_title', 'limit_word_count');
+	
+
 	
 
 	function ayushshrestha_share_buttons() {

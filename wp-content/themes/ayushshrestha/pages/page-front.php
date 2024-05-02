@@ -18,9 +18,10 @@ get_header(); ?>
 
 
 
-	<main id="primary" class="site-main relative z-20 mb-[100vh] bg-slate-100">
+	<main id="primary" class="site-main relative z-20 mb-[100vh] bg-slate-100 dark:bg-black">
         
-		
+   
+
         <div class="md:h-screen relative mb-auto overflow-hidden">
             <?php $the_query = new WP_Query([
                 "post_type" => ["photography", "portfolio", "videos", ""],
@@ -38,7 +39,7 @@ get_header(); ?>
                     $postthumbnails = get_template_directory_uri() . "/images/default-image-large.jpg";
                 endif; ?>
                     <div class="blur-lg w-full h-full absolute left-0 top-0 bg-no-repeat bg-center bg-cover"  style="background-image:url('<?php echo $postthumbnails; ?>');"  data-swiper-parallax="30%" data-scroll data-scroll-offset="100%, 0%"><div class="bg-white/60 h-full w-full"></div></div>
-                    <div class="bg-gradient-to-t from-slate-100 absolute z-10 w-full h-full top-0"></div>
+                    <div class="bg-gradient-to-t from-slate-100 dark:bg-default/10 absolute z-10 w-full h-full top-0"></div>
 
                     <div class="mx-5 md:mx-14 relative z-10 h-full">
                         <div class="grid md:grid-cols-2 h-full">
@@ -115,7 +116,7 @@ get_header(); ?>
                                     
                                     
                                         <h5 class="pt-6 mb-1 font-bold">Related Article</h5> 
-                                        <div class="text-sm font-medium text-gray-900 bg-white/30 border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                                        <div class="text-sm font-medium text-gray-900 bg-white/30 border border-gray-200 rounded-lg">
                                         
                                             <?php while ($my_query->have_posts()) { $my_query->the_post(); ?>
         
@@ -178,7 +179,7 @@ get_header(); ?>
                             <?php if (get_the_content()) { ?>
                                 <div class="text-xl md:text-4xl mb-10"><?php echo wp_trim_words( get_the_content(), 30, "..." ); ?></div>
                             <?php } ?>
-                            <a href="<?php the_permalink(); ?>" class="rounded-3xl py-3 px-8 text-gray-900 visited:text-gray-900 hover:text-white hover:bg-gray-700 border border-gray-900 transition duration-300 ">View More</a>
+                            <a href="<?php the_permalink(); ?>" class="btn btn-lg">View More</a>
                         <?php
                         endwhile; ?>
                     </div>
@@ -190,17 +191,17 @@ get_header(); ?>
         <div class="p-6 md:p-10 lg:px-14 relative overflow-hidden bg-default text-white" data-scroll-section>
             <div class="py-5 md:py-10">
                 <h5 class="text-sm">02</h5>
-                <h2 class="text-2xl sm:text-4xl font-bold">Work Experiences</h2>
-                <div class="md:flex align-items-center justify-between mb-7">
+                <h2>Work Experiences</h2>
+                <div class="md:flex align-items-center justify-between pb-7">
                     <div class="mb-5 md:mb-0">
                         <p class="text-xl md:text-2xl md:leading-8 md:mb-5">The Importance of a Strong Brand Positioning</p>
                     </div>
                     <div>
-                        <a href="?post_type=work-experience" class="rounded-3xl text-sm font-semibold py-3 px-8 text-gray-900 visited:text-gray-900 hover:text-white hover:bg-gray-700x border border-gray-900 transition duration-300 effect-cloudliquid">View More</a>
+                        <a href="?post_type=work-experience" class="btn btn-lg">View More</a>
                     </div>
                 </div>
 
-                <ol class="items-center sm:flex px-2 justify-start	">
+                <ol class="items-start sm:flex px-2 justify-start	">
                     <?php $the_query = new WP_Query(
                         "post_type=work-experience"
                     ); ?>                        
@@ -209,7 +210,7 @@ get_header(); ?>
                         $the_query->the_post(); ?>
                     <li class="relative mb-6 sm:mb-0">
                         <div class="flex items-center">
-                            <div class="z-10 flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full ring-0 ring-white dark:bg-blue-900 sm:ring-8 dark:ring-gray-900 shrink-0">
+                            <div class="z-10 flex items-center justify-center w-8 h-8 bg-white/30 rounded-full ring-0 ring-white dark:bg-primary-900 sm:ring-8 dark:ring-gray-900 shrink-0">
                                 <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12.6727 1.61162 20.7999 9H17.8267L12 3.70302 6 9.15757V19.0001H11V21.0001H5C4.44772 21.0001 4 20.5524 4 20.0001V11.0001L1 11.0001 11.3273 1.61162C11.7087 1.26488 12.2913 1.26488 12.6727 1.61162ZM14 11H23V18H14V11ZM16 13V16H21V13H16ZM24 21H13V19H24V21Z"></path></svg>
                             </div>
                             <div class="hidden sm:flex w-full bg-gray-200 h-0.5 dark:bg-gray-700"></div>
@@ -249,13 +250,13 @@ get_header(); ?>
                 <div class="py-3">
                     <div class="p-6 md:p-10 lg:px-12 ">
                         <h5 class="text-sm">03</h5>
-                        <h2 class="text-4xl tracking-tight sm:text-4xl font-bold mb-0">Selected Works</h2>
+                        <h2>Selected Works</h2>
                         <div class="md:flex align-items-center justify-between">
                             <div class="mb-5 md:mb-0">
-                                <h5 class="text-2xl leading-8">When Ideas captured, every dreams crafted into beautiful reality.</h5>
+                                <h5>When Ideas captured, every dreams crafted into beautiful reality.</h5>
                             </div>
                             <div>
-                                <a href="?post_type=portfolio" class="rounded-3xl text-sm font-semibold py-3 px-8 text-gray-900 visited:text-gray-900 hover:text-white hover:bg-gray-700x border border-gray-900 transition duration-300 effect-cloudliquid">View More</a>
+                                <a href="?post_type=portfolio" class="btn btn-lg">View More</a>
                             </div>
                         </div>
                     </div>
@@ -329,14 +330,14 @@ get_header(); ?>
         </div>
         <div class="p-6 md:p-10 lg:px-14 bg-default" data-scroll-section>
             <div class="pb-5 md:pb-10">
-                <h5 class="text-sm text-white">04</h5>
-                <h2 class="text-4xl tracking-tight sm:text-4xl font-bold text-white">Recommendations</h2>
+                <h5 class="text-sm">04</h5>
+                <h2>Recommendations</h2>
                 <div class="md:flex align-items-center justify-between mb-7 text-white">
                     <div class="mb-5 md:mb-0">
-                        <h5 class="text-2xl leading-8 mb-5">What colleagues says about me?</h5>
+                        <h5>What colleagues says about me?</h5>
                     </div>
                     <div>
-                        <a href="?post_type=post" class="rounded-3xl text-sm font-semibold py-3 px-8 text-gray-900 visited:text-gray-900 hover:text-white hover:bg-gray-700x border border-gray-900 transition duration-300 effect-cloudliquid">View More</a>
+                        <a href="?post_type=testimonial" class="btn btn-lg">View More</a>
                     </div>
                 </div>    
                 <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-5">
@@ -367,7 +368,7 @@ get_header(); ?>
                                 </div>
                                 <div>
                                     <div class="text-gray-900 mb-1"><?php the_title();?> </div>
-                                    <div class="flex space-x-2">
+                                    <div class="flex flex-wrap gap-1">
                                     <?php
                                         $thelist = "";
                                         $i = 0;
@@ -402,15 +403,15 @@ get_header(); ?>
         </div>
         <div class="p-6 md:p-10 lg:px-14 bg-gradient-to-b from-default" data-scroll-section>
             <div class="py-5 md:py-10">
-                <h5 class="text-sm text-white">05</h5>
-                <h2 class="text-4xl tracking-tight sm:text-4xl font-bold text-white">Research</h2>
+                <h5>05</h5>
+                <h2>Research</h2>
                 <div class="md:flex align-items-center justify-between mb-7 text-white">
                     <div class="mb-5 md:mb-0">
                         <h5 class="text-2xl leading-8 mb-5">The Importance of a Strong Brand Positioning</h5>
                         <p>Creating a Consistent Brand Identity Across All Touchpoints</p>
                     </div>
                     <div>
-                        <a href="?post_type=post" class="rounded-3xl text-sm font-semibold py-3 px-8 text-gray-900 visited:text-gray-900 hover:text-white hover:bg-gray-700x border border-gray-900 transition duration-300 effect-cloudliquid">View More</a>
+                        <a href="<?php the_permalink(); ?>blogs" class="btn btn-lg">View More</a>
                     </div>
                 </div>    
                 <div class="grid md:grid-cols-4 gap-5">
@@ -418,10 +419,8 @@ get_header(); ?>
                             "posts_per_page" => 4,
                             "orderby" => "rand",
                         ]); ?>
-                        <?php 
-                            while ($the_query->have_posts()):
-                            $the_query->the_post(); 
-                        ?>
+                        <?php  while ($the_query->have_posts()):
+                                $the_query->the_post();  ?>
 
                             <article <?php post_class("bg-white mb-0 p-4 rounded-xl hover:shadow-md transition duration-300 ease-in-out"); ?> data-scroll-section>
 
@@ -462,8 +461,7 @@ get_header(); ?>
                             </div>
                             </article>
                             
-                        <?php
-                        endwhile; ?>
+                        <?php endwhile; ?>
                 
                 </div>
             </div>

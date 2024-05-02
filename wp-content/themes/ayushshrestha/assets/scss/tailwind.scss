@@ -3,17 +3,24 @@
 @tailwind utilities;
 
 
+ol {
+    @apply ms-3;
+}
+ol li {
+    list-style-type: decimal;
+}
+
 @layer base {
 
     h1, h2, h3, h4, h5 {
-        @apply font-bold mb-2;
+        @apply font-bold mb-2 text-gray-700 leading-8;
 
     }
     h1 {
         @apply text-5xl;
     }
     h2 {
-        @apply text-4xl
+        @apply text-3xl lg:text-4xl;
     }
     h3 {
         @apply text-3xl;
@@ -22,17 +29,28 @@
         @apply text-2xl;
     }
     h5 {
-        
+        @apply  leading-5;
+    }
+    body, p {
+        @apply text-gray-700;
     }
 
 }
 
 @layer components {
     a {
-      @apply text-primary hover:text-default visited:text-primary/10;
+      @apply text-primary hover:text-default visited:text-primary/10 dark:text-white/80 dark:visited:text-white/40;
     }
+
 }
 
+
+.btn {
+    @apply text-gray-900 visited:text-gray-900 hover:text-white hover:bg-gray-700 dark:text-white dark:border-white border border-gray-900 transition duration-300;
+    &.btn-lg {
+        @apply rounded-3xl py-3 px-8;
+    }
+}
 
 .card {
     &-md {
@@ -92,4 +110,26 @@ p {
     width: 30px;
     height: 15px;
     background-color: #000;
+}
+
+
+
+/* Skeleton Animation CSS for WordPress */
+
+/* Keyframes for the skeleton animation */
+@keyframes skeleton-loading {
+    0% {
+        background-position: -200px 0;
+    }
+    100% {
+        background-position: calc(200px + 100%) 0;
+    }
+}
+
+/* Skeleton styles */
+.wp-skeleton, .wp-post-image {
+    background-color: #f0f0f0; /* Light gray background */
+    background-image: linear-gradient(90deg, #f0f0f0, #e0e0e0, #f0f0f0); /* Gradient background for animation */
+    background-size: 200px 100%; /* Size of the gradient background */
+    animation: skeleton-loading 1.5s infinite ease-in-out; /* Animation properties */
 }

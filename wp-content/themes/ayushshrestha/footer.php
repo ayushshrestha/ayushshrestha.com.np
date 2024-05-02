@@ -11,12 +11,12 @@
 
 ?>
 
-	<footer id="colophon" class="site-footer p-6 md:p-10 lg:px-14 fixed h-[100vh] bottom-0 w-full overflow-hidden bg-white z-0">
+	<footer id="colophon" class="site-footer p-6 md:p-10 lg:px-14 fixed h-[100vh] bottom-0 w-full overflow-hidden bg-white dark:bg-black z-0">
 		<h5 class="text-sm text-whiteX">05</h5>
-		<h2 class="text-xl tracking-tight font-light text-whiteX mb-5">Contact</h2>
+		<h2 class="text-xl tracking-tight font-light text-whiteX md:mb-5">Contact</h2>
 		<div class="grid md:grid-cols-6 align-items-center justify-between mb-7 block">
 			<div class="mb-5 md:mb-0 col-span-2">
-				<h5 class="text-4xl leading-8 mb-7 block">Let's discuss your <strong>vision</strong></h5>
+				<h5 class="leading-8 mb-7 block">Let's discuss your <strong>vision</strong></h5>
 				<div class="flex">
 					<a href="" class="rounded-3xl text-sm font-semibold py-3 px-5 text-gray-900 visited:text-gray-900 hover:text-default border border-gray-900 hover:border-default transition duration-300 effect-cloudliquid flex gap-1 items-center">
 					<svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M10 3H14C18.4183 3 22 6.58172 22 11C22 15.4183 18.4183 19 14 19V22.5C9 20.5 2 17.5 2 11C2 6.58172 5.58172 3 10 3ZM12 17H14C17.3137 17 20 14.3137 20 11C20 7.68629 17.3137 5 14 5H10C6.68629 5 4 7.68629 4 11C4 14.61 6.46208 16.9656 12 19.4798V17Z"></path></svg>
